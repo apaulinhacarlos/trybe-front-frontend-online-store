@@ -22,6 +22,7 @@ class RatingForm extends React.Component {
   render() {
     const { quantity } = this.state;
     const { handleQuantity } = this;
+    
     return (
       <form>
         <h1></h1>
