@@ -6,7 +6,14 @@ class CategoriesList extends React.Component {
     const { categories } = this.props;
     return (
       <ul>
-        {categories.map((categorie, index) => <li key={ index }>{categorie.name}</li>)}
+        {categories.map((categorie, index) => (
+          <li
+            key={ index }
+            data-testid="category"
+          >
+            {categorie.name}
+          </li>
+        ))}
       </ul>
     );
   }

@@ -1,16 +1,38 @@
 import React from 'react';
+import Search from './components/Search';
 import CategoriesList from './components/CategoriesList';
+import * as api from './services/api';
+import './App.css';
 
-const FAKE_OBJ = [
-  { id: '1', name: 'name1' },
-  { id: '2', name: 'name2' },
-  { id: '3', name: 'name3' },
-];
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      categories: [],
+    };
+    this.fetchApi = this.fetchApi.bind(this);
+  }
 
-function App() {
-  return (
-    <CategoriesList categories={ FAKE_OBJ } />
-  );
+  componentDidMount() {
+    this.fetchApi();
+  }
+
+  async fetchApi() {
+    const categories = await api.getCategories();
+    this.setState({
+      categories,
+    });
+  }
+
+  render() {
+    const { categories } = this.state;
+    return (
+      <div>
+        <Search />
+        <CategoriesList categories={ categories } />
+      </div>
+    );
+  }
 }
 
 export default App;
