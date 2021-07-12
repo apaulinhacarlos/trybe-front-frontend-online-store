@@ -1,36 +1,18 @@
 import React from 'react';
-import Search from './components/Search';
-import CategoriesList from './components/CategoriesList';
-import * as api from './services/api';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import ShoppingCart from './pages/ShoppingCart';
 import './App.css';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      categories: [],
-    };
-    this.fetchApi = this.fetchApi.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchApi();
-  }
-
-  async fetchApi() {
-    const categories = await api.getCategories();
-    this.setState({
-      categories,
-    });
-  }
-
   render() {
-    const { categories } = this.state;
     return (
-      <div>
-        <Search />
-        <CategoriesList categories={ categories } />
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={ Home } />
+          <Route path="/shopping-cart" component={ ShoppingCart } />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
