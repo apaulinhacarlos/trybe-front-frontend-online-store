@@ -1,23 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import CategoriesList from './components/CategoriesList';
+
+const FAKE_OBJ = [
+  { id: '1', name: 'name1' },
+  { id: '2', name: 'name2' },
+  { id: '3', name: 'name3' },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={ logo } className="App-logo" alt="logo" />
-        <p>Edit src/App.js and save to reload.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CategoriesList categories={ FAKE_OBJ } />
   );
 }
 
