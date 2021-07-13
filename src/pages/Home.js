@@ -1,3 +1,13 @@
+/*
+
+Página => Home
+
+Requisito(s) correspondente(s) => 2, 3, 4 e 5
+
+Descrição => Página inicial da aplicação.
+
+*/
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CategoriesList from '../components/CategoriesList';
@@ -8,6 +18,8 @@ import * as api from '../services/api';
 class Home extends React.Component {
   constructor() {
     super();
+    const cartProducts = JSON.parse(localStorage.getItem('cartProducts') || '[]');
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
     this.state = {
       search: '',
       products: [],
