@@ -3,36 +3,8 @@ import PropTypes from 'prop-types';
 import AddCartButton from './AddCartButton';
 
 class ShoppingCartItem extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     shoppingCart: [],
-  //     totalShoppingCart: 0,
-  //   };
-
-  //   this.decreaseQuantity = this.decreaseQuantity.bind(this);
-  //   this.increaseQuantity = this.increaseQuantity.bind(this);
-  //   this.totalValue = this.totalValue.bind(this);
-  // }
-
-  // componentDidMount() {
-
-  // }
-
-  // handleDecrease() {
-
-  // }
-
-  // handleIncrease() {
-
-  // }
-
-  // totalValue() {
-
-  // }
-
   render() {
-    const { shoppingCart } = this.props;
+    const { shoppingCart, index, handleDecrease, handleIncrease } = this.props;
     const { title, price, thumbnail } = shoppingCart;
 
     return (
@@ -40,26 +12,23 @@ class ShoppingCartItem extends React.Component {
         <div>
           <img src={ thumbnail } alt={ title } />
           <h3 data-testid="shopping-cart-product-name">{ title }</h3>
+          <AddCartButton
+            shoppingCart={ shoppingCart }
+            index={ index }
+            handleDecrease={ handleDecrease }
+            handleIncrease={ handleIncrease }
+          />
           <p>{ `R$ ${price}` }</p>
-
-          <AddCartButton />
-
         </div>
-
-        <div>
-          <p>Valor total da compra: R$ {`${1+1}`}</p>
-        </div>
-
-        <div>
-          <button type="button">Finalizar Compra</button>
-        </div>
-
       </div>
     );
   }
 }
 
 ShoppingCartItem.propTypes = {
+  handleDecrease: PropTypes.func.isRequired,
+  handleIncrease: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
   shoppingCart: PropTypes.arrayOf(
     PropTypes.object.isRequired,
   ).isRequired,

@@ -1,57 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 
 class AddCartButton extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      qtd: 1,
-    };
-
-    this.handleDecrease = this.handleDecrease.bind(this);
-    this.handleIncrease = this.handleIncrease.bind(this);
-  }
-
-  handleDecrease() {
-    this.setState((prevState) => ({
-      qtd: prevState.qtd - 1,
-    }));
-  }
-
-  handleIncrease() {
-    this.setState((prevState) => {
-      if (prevState.qtd >= 1) {
-        return (
-          {
-            qtd: prevState.qtd + 1,
-          }
-        );
-      }
-    });
-  }
-
   render() {
-    const { qtd } = this.state;
-    const { handleDecrease, handleIncrease } = this;
+    const { handleDecrease, handleIncrease, index, shoppingCart } = this.props;
     return (
       <div>
         <Button
           name="decreaseButton"
           className="decrease-button"
-          onClick={ handleDecrease }
+          onClick={ () => handleDecrease(index) }
           title="-"
+          data-testid="product-decrease-quantity"
         />
-        <p data-testid="shopping-cart-product-quantity">{qtd}</p>
+        <p data-testid="shopping-cart-product-quantity">{shoppingCart.quantity}</p>
         <Button
           name="increaseButton"
           className="increase-button"
-          onClick={ handleIncrease }
+          onClick={ () => handleIncrease(index) }
           title="+"
+          data-testid="product-increase-quantity"
         />
       </div>
 
     );
   }
 }
+
+AddCartButton.propTypes = {
+  handleDecrease: PropTypes.func.isRequired,
+  handleIncrease: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  shoppingCart: PropTypes.arrayOf(
+    PropTypes.object.isRequired,
+  ).isRequired,
+};
 
 export default AddCartButton;
