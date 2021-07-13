@@ -18,6 +18,8 @@ import * as api from '../services/api';
 class Home extends React.Component {
   constructor() {
     super();
+    const cartProducts = JSON.parse(localStorage.getItem('cartProducts') || '[]');
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
     this.state = {
       search: '',
       products: [],
