@@ -56,43 +56,6 @@ class ShoppingCart extends React.Component {
         </main>
       </>
     );
-    // if (products.length <= 0) {
-    //   return (
-    //     <div>
-    //       <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
-    //     </div>
-    //   );
-    // }
-
-    // return (
-  //   <div>
-  //     {products.map((product, index) => (
-  //       <div
-  //         key={ index }
-  //       >
-  //         <img
-  //           src={ product.thumbnail }
-  //           alt={ product.title }
-  //         />
-  //         <h3
-  //           data-testid="shopping-cart-product-name"
-  //         >
-  //           { product.title }
-  //         </h3>
-  //         <span>
-  //           { `R$ ${product.price}` }
-  //         </span>
-  //         <span
-  //           data-testid="shopping-cart-product-quantity"
-  //         >
-  //           { `Qtd.:${product.available_quantity}` }
-  //         </span>
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
-
-
   }
 }
 

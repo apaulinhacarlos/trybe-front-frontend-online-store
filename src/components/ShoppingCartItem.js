@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class ShoppingCartItem extends React.Component {
   // constructor() {
@@ -31,14 +31,8 @@ class ShoppingCartItem extends React.Component {
   // }
 
   render() {
-    // const id = 'MLB1774447998';
-    // const title = 'Moto G9 Play Dual Sim 64 Gb Azul-safira 4 Gb Ram';
-    // const price = 1093;
-    // const thumbnail = 'http://http2.mlstatic.com/D_662487-MLA43910324327_102020-I.jpg';
-
     const { shoppingCart } = this.props;
-    const { title, price, thumbnail, available_quantity } = shoppingCart;
-    // const { totalShoppingCart } = this.state;
+    const { title, price, thumbnail } = shoppingCart;
 
     return (
       <div>
@@ -46,52 +40,40 @@ class ShoppingCartItem extends React.Component {
           <img src={ thumbnail } alt={ title } />
           <h3 data-testid="shopping-cart-product-name">{ title }</h3>
           <p>{ `R$ ${price}` }</p>
-          <p
-            data-testid="shopping-cart-product-quantity"
-          >
-            { `Qtd.:${available_quantity}` }
-          </p>
 
-          {/* <button
+          <button
             type="button"
             // onClick={ handleDecrease }
           >
             -
           </button>
-          <p>quantidade variavel</p>
+          <p data-testid="shopping-cart-product-quantity">1</p>
           <button
             type="button"
             // onClick={ handleIncrease }
           >
             +
-          </button> */}
+          </button>
 
         </div>
 
         <div>
-          <p>Valor total da compra: R$ {`${ 1+1 }`}</p>
+          <p>Valor total da compra: R$ {`${1+1}`}</p>
         </div>
 
         <div>
           <button type="button">Finalizar Compra</button>
         </div>
-        
+
       </div>
     );
   }
 }
 
-export default ShoppingCartItem;
+ShoppingCartItem.propTypes = {
+  shoppingCart: PropTypes.arrayOf(
+    PropTypes.object.isRequired,
+  ).isRequired,
+};
 
-// return (
-//   <div>
-//     {products.map((product, index) => (
-//       <div key={ index } >
-//         <img src={ product.thumbnail } alt={ product.title } />
-//         <h3 data-testid="shopping-cart-product-name" >{ product.title }</h3>
-//         <span>{ `R$ ${product.price}` }</span>
-//         <span data-testid="shopping-cart-product-quantity">{ `Qtd.:${product.available_quantity}` }</span>
-//       </div>
-//     ))}
-//   </div>
-// );
+export default ShoppingCartItem;
