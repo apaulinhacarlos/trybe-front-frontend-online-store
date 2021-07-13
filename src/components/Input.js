@@ -12,6 +12,7 @@ class Input extends React.Component {
       isRequired,
       labelValue,
       className,
+      testId,
     } = this.props;
 
     return (
@@ -25,6 +26,7 @@ class Input extends React.Component {
           placeholder={ placeholder }
           onChange={ (e) => onChange(e) }
           required={ isRequired }
+          data-testid={ testId }
         />
       </label>
     );
@@ -33,6 +35,7 @@ class Input extends React.Component {
 
 Input.defaultProps = {
   labelValue: '',
+  testId: '',
 };
 
 Input.propTypes = {
@@ -44,6 +47,7 @@ Input.propTypes = {
   labelValue: PropTypes.string,
   className: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
+  testId: PropTypes.string,
 };
 
 export default Input;

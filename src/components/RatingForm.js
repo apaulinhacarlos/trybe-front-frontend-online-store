@@ -63,6 +63,7 @@ class RatingForm extends React.Component {
               placeholder="Email"
               isRequired
               className="rating-input"
+              testId="product-detail-evaluation"
             />
             <StarsRating
               rate={ rate }
