@@ -2,9 +2,31 @@ import React from 'react';
 
 class Input extends React.Component {
   render() {
-    const { value, type, placeholder, onChange } = this.props;
+    const {
+      value,
+      type,
+      placeholder,
+      onChange,
+      name,
+      isRequired,
+      labelValue = '',
+      className,
+    } = this.props;
+
     return (
-      <input value={ value } type={ type } placeholder={ placeholder } onChange={ (e) => onChange(e) } />
+      <label>
+        { labelValue }
+        <input
+        className={ className }
+        name={ name }
+        value={ value }
+        type={ type }
+        placeholder={ placeholder }
+        onChange={ (e) => onChange(e) }
+        required={ isRequired }
+        />
+      </label>
+      
     );
   }
 }

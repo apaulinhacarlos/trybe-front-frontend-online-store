@@ -1,16 +1,19 @@
 import React from 'react';
 
 class Button extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-
-    };
-  }
   render() {
-    const { title, onClick, type } = this.props;
+    const {
+      title,
+      onClick,
+      type,
+      className,
+      labelValue="",
+    } = this.props;
     return(
-      <button type={ type } onClick={ onClick } >{ title }</button>
+      <label>
+        { labelValue }
+        <button className={ className } type={ type } onClick={ onClick } >{ title }</button>
+      </label>
     );
   }
 }

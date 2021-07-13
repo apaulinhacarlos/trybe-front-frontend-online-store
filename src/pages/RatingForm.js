@@ -1,29 +1,39 @@
 import React from 'react';
-import Button from '../components/Button';
 import Input from '../components/Input';
+import Textarea from '../components/Textarea';
+import Button from '../components/Button';
 
 class RatingForm extends React.Component {
   constructor() {
     super();
     this.state = {
       email: '',
+      message: '',
     };
-    this.handleEmailValue = this.handleEmailValue.bind(this);
+    this.handleValue = this.handleValue.bind(this);
   }
 
-  handleEmailValue({ target: { value } }) {
-    this.setState({ email: value })
+  handleValue({ target: { value, name } }) {
+    this.setState({ [name]: value })
   }
+
+  handleBtnClick(event) {
+    event.preventDefault();
+    console.log('Avaliei!');
+  }
+
   render() {
-    const {  email } = this.state;
-    const { handleEmailValue } = this;
+    const {  email, message } = this.state;
+    const { handleValue, handleBtnClick } = this;
     
     return (
       <section>
         <div>
           <h2>Avaliações</h2>
-          <form>
-            <Input type="email" value={ email } onChange={ handleEmailValue } />
+          <form className="rating-form">
+            <Input type="email" value={ email } name="email" onChange={ handleValue } placeholder="Email" isRequired={ true } className="rating-input" />
+            <Textarea value={ message } name="message" onChange={ handleValue } placeholder="Mensagem (opcional)" isRequired={ false } className="rating-textarea" />
+            <Button type="submit" onClick={ handleBtnClick } title="Avaliar" className="rating-btn" />
           </form>
         </div>
       </section>
