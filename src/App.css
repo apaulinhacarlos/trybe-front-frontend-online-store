@@ -11,3 +11,16 @@
 }
 
 /* Fim dos estilos do componente RatingForm */
+
+/* Início dos estilos do componente StarsRating */
+
+.star {
+  border: none;
+  background-color: unset;
+}
+
+.filled {
+  color: #E0D14F;
+}
+
+/* Fim dos estilos do componente StarsRating */

@@ -2,6 +2,7 @@ import React from 'react';
 import Input from '../components/Input';
 import Textarea from '../components/Textarea';
 import Button from '../components/Button';
+import StarsRating from '../components/StarsRating';
 
 class RatingForm extends React.Component {
   constructor() {
@@ -32,6 +33,7 @@ class RatingForm extends React.Component {
           <h2>Avaliações</h2>
           <form className="rating-form">
             <Input type="email" value={ email } name="email" onChange={ handleValue } placeholder="Email" isRequired={ true } className="rating-input" />
+            <StarsRating />
             <Textarea value={ message } name="message" onChange={ handleValue } placeholder="Mensagem (opcional)" isRequired={ false } className="rating-textarea" />
             <Button type="submit" onClick={ handleBtnClick } title="Avaliar" className="rating-btn" />
           </form>
