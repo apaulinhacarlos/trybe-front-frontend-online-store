@@ -1,41 +1,29 @@
 import React from 'react';
+import Button from '../components/Button';
 
 class StarsRating extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      rate: 0,
-    }
-
-    this.handleRate = this.handleRate.bind(this);
-  }
-
   handleRate(event, rate) {
     event.preventDefault();
     this.setState({ rate });
   }
 
   render() {
-    const { rate } = this.state;
-    const { handleRate } = this;
+    const {
+      rate,
+      onClick=null,
+    } = this.props;
     return(
       <div>
-        {
-         Array.from({ length: 5}).map((star, index) =>
-         {
+        { Array.from({ length: 5}).map((_star, index) => {
             const starClass = (rate >= (index + 1) ? 'filled' : '');
-            return (<button
+            return (<Button
               key={`star-${index}`}
+              type="button"
               className={ `material-icons star ${starClass}`}
-              onClick={ (event) => handleRate(event, (index + 1)) }
-              >
-              star_outline
-            </button>)
-         })
-         
+              onClick={ (event) => onClick(event, (index + 1)) }
+              title="star_outline" />);
+          })
         }
-        
       </div>
     
   ); 

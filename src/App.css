@@ -8,6 +8,18 @@
   display: flex;
   flex-flow: column nowrap;
   gap: 5px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.rating-form div {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.rating-form label {
+  display: flex;
 }
 
 /* Fim dos estilos do componente RatingForm */
