@@ -1,70 +1,68 @@
 import React from 'react';
-import Search from '../components/Search';
-import ShoppingCartButton from '../components/ShoppingCartButton';
-import ShoppingList from '../components/ShoppingList';
+import { Link } from 'react-router-dom';
 import CategoriesList from '../components/CategoriesList';
+import ProductsList from '../components/ProductsList';
+import Search from '../components/Search';
 import * as api from '../services/api';
 
 class Home extends React.Component {
   constructor() {
     super();
-    
     this.state = {
       search: '',
-      productList: [],
+      products: [],
       categories: [],
     };
-
-    this.searchChange = this.searchChange.bind(this);
-    this.fetchApi = this.fetchApi.bind(this);
+    this.fetchProducts = this.fetchProducts.bind(this);
     this.fetchCategories = this.fetchCategories.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.changeSearch = this.changeSearch.bind(this);
   }
 
-  handleClick(event) {
-    event.preventDefault();
-    this.fetchApi();
+  componentDidMount() {
+    this.fetchCategories();
   }
 
-  searchChange(event) {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  fetchCategories() {
+  async fetchCategories() {
     const categories = await api.getCategories();
     this.setState({
       categories,
     });
   }
-  
-  fetchApi() {
+
+  async fetchProducts() {
     const { search } = this.state;
-    api.getProductsFromCategoryAndQuery(null, search).then((response) => {
-      this.setState({
-        productList: response,
-      });
+    const products = await api.getProductsFromCategoryAndQuery(null, search);
+    const { results } = products;
+    this.setState({
+      products: results,
+    });
   }
 
-  componentDidMount() {
-    this.fetchApi();
+  changeSearch(e) {
+    const { value } = e.target;
+    this.setState({
+      search: value,
+    });
   }
 
   render() {
-    const { productList, categories } = this.state;
+    const { search, products, categories } = this.state;
     return (
       <div>
         <Search
-          onClick={ (event) => this.handleClick(event) }
-          onChange={ (event) => this.searchChange(event) }
-          name="search"
+          value={ search }
+          onChange={ this.changeSearch }
+          onClick={ this.fetchProducts }
         />
-        <ShoppingList productList={ productList } />
-        <ShoppingCartButton />
+        <Link
+          to="/shopping-cart"
+          data-testid="shopping-cart-button"
+        >
+          Carrinho
+        </Link>
         <CategoriesList categories={ categories } />
-      <div/>
+        <ProductsList products={ products } />
+      </div>
     );
   }
 }

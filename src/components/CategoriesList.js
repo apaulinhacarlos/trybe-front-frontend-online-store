@@ -6,12 +6,12 @@ class CategoriesList extends React.Component {
     const { categories } = this.props;
     return (
       <ul>
-        {categories.map((categorie, index) => (
+        {categories.map((categorie) => (
           <li
-            key={ index }
+            key={ categorie.id }
             data-testid="category"
           >
-            {categorie.name}
+            { categorie.name }
           </li>
         ))}
       </ul>
@@ -21,10 +21,7 @@ class CategoriesList extends React.Component {
 
 CategoriesList.propTypes = {
   categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
+    PropTypes.object.isRequired,
   ).isRequired,
 };
 
