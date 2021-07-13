@@ -1,11 +1,12 @@
 import React from 'react';
-import StarsRating from './StarsRating'
+import PropTypes from 'prop-types';
+import StarsRating from './StarsRating';
 
 class Comment extends React.Component {
   render() {
     const {
       email,
-      comment = "",
+      comment = '',
       rate,
       className,
     } = this.props;
@@ -21,5 +22,16 @@ class Comment extends React.Component {
     );
   }
 }
+
+Comment.defaultProps = {
+  comment: '',
+};
+
+Comment.propTypes = {
+  email: PropTypes.string.isRequired,
+  comment: PropTypes.string,
+  rate: PropTypes.number.isRequired,
+  className: PropTypes.string.isRequired,
+};
 
 export default Comment;

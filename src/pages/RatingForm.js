@@ -20,7 +20,7 @@ class RatingForm extends React.Component {
   }
 
   handleValue({ target: { value, name } }) {
-    this.setState({ [name]: value })
+    this.setState({ [name]: value });
   }
 
   handleBtnClick(event) {
@@ -29,7 +29,9 @@ class RatingForm extends React.Component {
     if (email.length !== 0) {
       this.setState((prevState) => {
         const comment = { email, message, rate };
-        const newComments = prevState.comments.length > 0 ? [...prevState.comments, comment] : [comment];
+        const newComments = prevState.comments.length > 0
+          ? [...prevState.comments, comment]
+          : [comment];
         return ({ comments: newComments });
       });
     }
@@ -41,32 +43,68 @@ class RatingForm extends React.Component {
   }
 
   render() {
-    const {  email, message, rate, comments } = this.state;
+    const {
+      email,
+      message,
+      rate,
+      comments,
+    } = this.state;
     const { handleValue, handleBtnClick, handleRate } = this;
     return (
       <section className="rating-section">
-          <h2>Avaliações</h2>
-          <form className="rating-form">
-            <div>
-              <Input type="email" value={ email } name="email" onChange={ handleValue } placeholder="Email" isRequired={ true } className="rating-input" />
-              <StarsRating rate={ rate } onClick={ handleRate } />
-            </div>
-            <Textarea value={ message } name="message" onChange={ handleValue } placeholder="Mensagem (opcional)" isRequired={ false } className="rating-textarea" />
-            <Button type="submit" onClick={ handleBtnClick } title="Avaliar" className="rating-btn" />
-          </form>
-          { comments.length > 0 && (
-            <section className="rating-comments-section">{
-              comments.map((comment) => {
+        <h2>Avaliações</h2>
+        <form className="rating-form">
+          <div>
+            <Input
+              type="email"
+              value={ email }
+              name="email"
+              onChange={ handleValue }
+              placeholder="Email"
+              isRequired
+              className="rating-input"
+            />
+            <StarsRating
+              rate={ rate }
+              onClick={ handleRate }
+            />
+          </div>
+          <Textarea
+            value={ message }
+            name="message"
+            onChange={ handleValue }
+            placeholder="Mensagem (opcional)"
+            isRequired={ false }
+            className="rating-textarea"
+          />
+          <Button
+            onClick={ handleBtnClick }
+            title="Avaliar"
+            className="rating-btn"
+            name="rating-btn"
+          />
+        </form>
+        { comments.length > 0 && (
+          <section className="rating-comments-section">
+            {
+              comments.map((comment, index) => {
                 const {
-                  rate,
-                  email,
-                  message,
-                  } = comment;
-                return (<Comment rate={ rate } email={ email } comment={ message } className="rating-comment" />);
+                  rate: commentRate,
+                  email: commentEmail,
+                  message: commentMessage,
+                } = comment;
+                return (<Comment
+                  key={ `${commentEmail}${index}` }
+                  rate={ commentRate }
+                  email={ commentEmail }
+                  comment={ commentMessage }
+                  className="rating-comment"
+                />);
               })
-            }</section>
-          )}
-     </section>
+            }
+          </section>
+        )}
+      </section>
     );
   }
 }
