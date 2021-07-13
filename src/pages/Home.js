@@ -28,10 +28,20 @@ class Home extends React.Component {
     this.fetchProducts = this.fetchProducts.bind(this);
     this.fetchCategories = this.fetchCategories.bind(this);
     this.changeSearch = this.changeSearch.bind(this);
+    this.handleClickCategory = this.handleClickCategory.bind(this);
+    this.fetchProductsCategory = this.fetchProductsCategory.bind(this);
   }
 
   componentDidMount() {
     this.fetchCategories();
+  }
+
+  // Requisito 06: um handle para atribuir o id da categoria na
+  //               função, quando a categoria for selecionada
+
+  handleClickCategory(e) {
+    const id = e.target.getAttribute('id');
+    this.fetchProductsCategory(id);
   }
 
   async fetchCategories() {
@@ -45,6 +55,16 @@ class Home extends React.Component {
     const { search } = this.state;
     const products = await api.getProductsFromCategoryAndQuery(null, search);
     const { results } = products;
+    this.setState({
+      products: results,
+    });
+  }
+
+  // Requisito 06: função para buscar os produtos por categoria
+
+  async fetchProductsCategory(id) {
+    const request = await api.getProductsFromCategoryAndQuery(id, null);
+    const { results } = request;
     this.setState({
       products: results,
     });
@@ -72,7 +92,10 @@ class Home extends React.Component {
         >
           Carrinho
         </Link>
-        <CategoriesList categories={ categories } />
+        <CategoriesList
+          categories={ categories }
+          handleClick={ this.handleClickCategory }
+        />
         <ProductsList products={ products } />
       </div>
     );
