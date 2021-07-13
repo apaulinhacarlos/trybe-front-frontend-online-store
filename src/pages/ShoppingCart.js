@@ -15,6 +15,7 @@ import React from 'react';
 class ShoppingCart extends React.Component {
   render() {
     const products = JSON.parse(localStorage.getItem('cartProducts'));
+    console.log(products);
     if (products.length <= 0) {
       return (
         <div>
@@ -43,7 +44,7 @@ class ShoppingCart extends React.Component {
             <span
               data-testid="shopping-cart-product-quantity"
             >
-              { `Qtd.:${product.available_quantity}` }
+              Qtd.: 1
             </span>
           </div>
         ))}
