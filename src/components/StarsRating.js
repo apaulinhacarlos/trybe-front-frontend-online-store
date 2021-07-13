@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../components/Button';
 
 class StarsRating extends React.Component {
@@ -10,7 +11,7 @@ class StarsRating extends React.Component {
   render() {
     const {
       rate,
-      onClick=null,
+      onClick,
     } = this.props;
     return(
       <div>
@@ -28,6 +29,10 @@ class StarsRating extends React.Component {
     
   ); 
   }
+}
+
+StarsRating.defaultProps = {
+  onClick: () => {},
 }
 
 export default StarsRating;
