@@ -3,37 +3,36 @@ import PropTypes from 'prop-types';
 
 class Search extends React.Component {
   render() {
-    const { onClick, name, onChange } = this.props;
+    const { value, onChange, onClick } = this.props;
     return (
-      <form>
-        <div data-testid="home-initial-message">
-          <label htmlFor="input-search">
-            <input
-              id="input-search"
-              type="text"
-              onChange={ onChange }
-              name={ name }
-              data-testid="query-input"
-            />
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </label>
-          <button
-            type="button"
-            data-testid="query-button"
-            onClick={ onClick }
-          >
-            Pesquisar
-          </button>
-        </div>
-      </form>
+      <div>
+        <input
+          type="text"
+          value={ value }
+          onChange={ onChange }
+          data-testid="query-input"
+        />
+        <button
+          type="button"
+          onClick={ onClick }
+          data-testid="query-button"
+        >
+          Buscar
+        </button>
+        <p
+          data-testid="home-initial-message"
+        >
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
+      </div>
     );
   }
 }
 
 Search.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Search;
