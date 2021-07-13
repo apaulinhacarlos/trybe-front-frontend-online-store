@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AddCartButton from './AddCartButton';
 
 class ShoppingCartItem extends React.Component {
   // constructor() {
@@ -41,19 +42,7 @@ class ShoppingCartItem extends React.Component {
           <h3 data-testid="shopping-cart-product-name">{ title }</h3>
           <p>{ `R$ ${price}` }</p>
 
-          <button
-            type="button"
-            // onClick={ handleDecrease }
-          >
-            -
-          </button>
-          <p data-testid="shopping-cart-product-quantity">1</p>
-          <button
-            type="button"
-            // onClick={ handleIncrease }
-          >
-            +
-          </button>
+          <AddCartButton />
 
         </div>
 
