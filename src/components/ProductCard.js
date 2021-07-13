@@ -1,3 +1,14 @@
+/*
+
+Componente => ProductCard
+
+Requisito(s) correspondente(s) => 5
+
+Descrição => Recebe um objeto como props e cria uma div com dados do objeto.
+Dentro da div é criada uma imagem, um título e um preço.
+
+*/
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
