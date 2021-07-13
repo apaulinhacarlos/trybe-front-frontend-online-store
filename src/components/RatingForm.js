@@ -1,9 +1,9 @@
 import React from 'react';
-import Input from '../components/Input';
-import Textarea from '../components/Textarea';
-import Button from '../components/Button';
-import StarsRating from '../components/StarsRating';
-import Comment from '../components/Comment';
+import Input from './Input';
+import Textarea from './Textarea';
+import Button from './Button';
+import StarsRating from './StarsRating';
+import Comment from './Comment';
 
 class RatingForm extends React.Component {
   constructor() {
