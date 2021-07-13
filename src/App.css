@@ -2,41 +2,63 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-
-}
-
-.App-header {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
+/* Início dos estilos do componente RatingForm */
+.rating-section {
   display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: 100vh;
+  flex-flow: column nowrap;
+  gap: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.rating-form {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.rating-form div {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
 }
+
+.rating-form label {
+  display: flex;
+}
+
+.rating-comments-section {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
+}
+
+/* Fim dos estilos do componente RatingForm */
+
+/* Início dos estilos do componente StarsRating */
+.star {
+  background-color: unset;
+  border: none;
+}
+
+.filled {
+  color: #e0d14f;
+}
+
+/* Fim dos estilos do componente StarsRating */
+
+/* Início dos estilos do componente Comment */
+.rating-comment {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+}
+
+.rating-comment div {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+/* Fim dos estilos do componente Comment */
