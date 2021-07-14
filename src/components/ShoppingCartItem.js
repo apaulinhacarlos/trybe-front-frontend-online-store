@@ -5,7 +5,13 @@ import Button from './Button';
 
 class ShoppingCartItem extends React.Component {
   render() {
-    const { shoppingCart, index, handleDecrease, handleIncrease, handleRemove } = this.props;
+    const {
+      shoppingCart,
+      index,
+      handleDecrease,
+      handleIncrease,
+      handleRemove,
+    } = this.props;
     const { title, price, thumbnail } = shoppingCart;
 
     return (
@@ -13,7 +19,12 @@ class ShoppingCartItem extends React.Component {
         <div>
           <img src={ thumbnail } alt={ title } />
           <h3 data-testid="shopping-cart-product-name">{ title }</h3>
-          <Button className="shopping-cart-remove-btn" title="X" name="remove-cart-item" onClick={ () => handleRemove(index) } />
+          <Button
+            className="shopping-cart-remove-btn"
+            title="X"
+            name="remove-cart-item"
+            onClick={ () => handleRemove(index) }
+          />
           <AddCartButton
             shoppingCart={ shoppingCart }
             index={ index }
@@ -34,6 +45,7 @@ ShoppingCartItem.propTypes = {
   shoppingCart: PropTypes.arrayOf(
     PropTypes.object.isRequired,
   ).isRequired,
+  handleRemove: PropTypes.func.isRequired,
 };
 
 export default ShoppingCartItem;
