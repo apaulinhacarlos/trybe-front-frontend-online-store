@@ -11,6 +11,7 @@ Dentro da div é criada uma imagem, um título e um preço.
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class ProductsCard extends React.Component {
   constructor() {
@@ -49,6 +50,12 @@ class ProductsCard extends React.Component {
         >
           Comprar
         </button>
+        <Link
+          to={ `/product-details/${title}` }
+          data-testid="product-detail-link"
+        >
+          Detalhes
+        </Link>
       </div>
     );
   }
