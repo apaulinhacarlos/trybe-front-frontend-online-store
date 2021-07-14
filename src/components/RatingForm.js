@@ -63,7 +63,6 @@ class RatingForm extends React.Component {
               placeholder="Email"
               isRequired
               className="rating-input"
-              testId="product-detail-evaluation"
             />
             <StarsRating
               rate={ rate }
@@ -77,6 +76,7 @@ class RatingForm extends React.Component {
             placeholder="Mensagem (opcional)"
             isRequired={ false }
             className="rating-textarea"
+            dataTestId="product-detail-evaluation"
           />
           <Button
             onClick={ handleBtnClick }

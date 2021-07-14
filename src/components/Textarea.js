@@ -11,6 +11,7 @@ class Textarea extends React.Component {
       labelValue,
       className,
       placeholder,
+      dataTestId,
     } = this.props;
 
     return (
@@ -23,8 +24,7 @@ class Textarea extends React.Component {
           name={ name }
           required={ isRequired }
           placeholder={ placeholder }
-          rows="5"
-          cols="50"
+          data-testid={ dataTestId }
         />
       </label>
     );
@@ -33,6 +33,7 @@ class Textarea extends React.Component {
 
 Textarea.defaultProps = {
   labelValue: '',
+  dataTestId: '',
 };
 
 Textarea.propTypes = {
@@ -43,6 +44,7 @@ Textarea.propTypes = {
   labelValue: PropTypes.string,
   className: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
+  dataTestId: PropTypes.string,
 };
 
 export default Textarea;
