@@ -86,7 +86,7 @@ class ShoppingCart extends React.Component {
     return (
       <>
         <header>
-          <Link to="/">Voltar</Link>
+          <Link to="/" data-testid="shopping-cart-button">Voltar</Link>
           <h1>Carrinho de Compras</h1>
         </header>
         <main>

@@ -13,7 +13,10 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={ Home } />
           <Route path="/shopping-cart" component={ ShoppingCart } />
-          <Route path="/product-details/:name" component={ ProductDetails } />
+          <Route
+            path="/product-details/:id/:title/:price"
+            component={ ProductDetails }
+          />
           <Route path="/checkout" component={ Checkout } />
         </Switch>
       </BrowserRouter>

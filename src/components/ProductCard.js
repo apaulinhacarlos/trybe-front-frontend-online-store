@@ -36,7 +36,10 @@ class ProductsCard extends React.Component {
 
   render() {
     const { product } = this.props;
-    const { price, thumbnail, title } = product;
+    const { id, price, thumbnail, title } = product;
+    if (product.quantity === null || product.quantity === undefined) {
+      product.quantity = 1;
+    }
     return (
       <div
         data-testid="product"
@@ -45,11 +48,14 @@ class ProductsCard extends React.Component {
           src={ thumbnail }
           alt={ title }
         />
-        <h3>
+        <h3 data-testid="shopping-cart-product-name">
           { title }
         </h3>
         <span>
           { `R$ ${price}` }
+        </span>
+        <span data-testid="shopping-cart-product-quantity">
+          { `Qtd.: ${product.quantity}` }
         </span>
         <button
           type="button"
@@ -59,7 +65,7 @@ class ProductsCard extends React.Component {
           Comprar
         </button>
         <Link
-          to={ `/product-details/${title}` }
+          to={ `/product-details/${id}/${title}/${price}` }
           data-testid="product-detail-link"
         >
           Detalhes
@@ -71,7 +77,8 @@ class ProductsCard extends React.Component {
 
 ProductsCard.propTypes = {
   product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     thumbnail: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

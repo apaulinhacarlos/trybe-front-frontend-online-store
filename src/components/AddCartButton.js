@@ -5,6 +5,9 @@ import Button from './Button';
 class AddCartButton extends React.Component {
   render() {
     const { handleDecrease, handleIncrease, index, shoppingCart } = this.props;
+    if (shoppingCart.quantity === null || shoppingCart.quantity === undefined) {
+      shoppingCart.quantity = 1;
+    }
     return (
       <div>
         <Button
