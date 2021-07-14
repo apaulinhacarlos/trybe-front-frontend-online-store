@@ -4,16 +4,51 @@
   margin: 0;
 }
 
+.material-icons-outlined {
+  color: black;
+}
+
 /* Início dos estilos da página Home */
 
 .main-home {
   display: flex;
   flex-flow: row nowrap;
+  padding: 10px;
+}
+
+.categories-list {
+  display: flex;
+  flex-flow: column wrap;
+  width: 20%;
+  position: fixed;
+}
+
+.main-products-section {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 80%;
+  margin-left: 20%;
 }
 
 .main-products-header {
   display: flex;
   flex-flow: row nowrap;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-bar {
+  display: flex;
+  width: 100%;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.search-bar input {
+  width: 50%;
 }
 
 /* Fim dos estilos da página Home */

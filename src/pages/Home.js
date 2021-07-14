@@ -85,7 +85,7 @@ class Home extends React.Component {
           categories={ categories }
           handleClick={ this.handleClickCategory }
         />
-        <section>
+        <section className="main-products-section">
           <header className="main-products-header">
             <Search
               value={ search }
@@ -95,10 +95,18 @@ class Home extends React.Component {
             <Link
               to="/shopping-cart"
               data-testid="shopping-cart-button"
+              className="shopping-cart-button"
             >
-              Carrinho
+              <span class="material-icons-outlined">
+                 shopping_cart
+              </span>
             </Link>
           </header>
+          <p
+          data-testid="home-initial-message"
+          >
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
           <ProductsList products={ products } />
         </section>
       </main>
