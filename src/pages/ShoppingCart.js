@@ -39,10 +39,12 @@ class ShoppingCart extends React.Component {
   handleDecrease(index) {
     const { shoppingCart } = this.state;
     const newShoppingCart = [...shoppingCart];
-    newShoppingCart[index].quantity -= 1;
-    this.setState({
-      shoppingCart: newShoppingCart,
-    });
+    if (newShoppingCart[index].quantity > 0) {
+      newShoppingCart[index].quantity -= 1;
+      this.setState({
+        shoppingCart: newShoppingCart,
+      });
+    }
     console.log(shoppingCart[index].quantity);
   }
 
@@ -102,11 +104,18 @@ class ShoppingCart extends React.Component {
               ))
           }
           <div>
-            <p>{ `R$ ${totalPrice()}` }</p>
+            <p>{ `Total: R$ ${totalPrice()}` }</p>
           </div>
 
           <div>
-            <button type="button">Finalizar Compra</button>
+            <Link to="/checkout">
+              <button
+                type="button"
+                data-testid="checkout-products"
+              >
+                Finalizar Compra
+              </button>
+            </Link>
           </div>
         </main>
       </>

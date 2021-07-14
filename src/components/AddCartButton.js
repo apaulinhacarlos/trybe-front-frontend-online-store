@@ -12,7 +12,7 @@ class AddCartButton extends React.Component {
           className="decrease-button"
           onClick={ () => handleDecrease(index) }
           title="-"
-          data-testid="product-decrease-quantity"
+          dataTestId="product-decrease-quantity"
         />
         <p data-testid="shopping-cart-product-quantity">{shoppingCart.quantity}</p>
         <Button
@@ -20,7 +20,7 @@ class AddCartButton extends React.Component {
           className="increase-button"
           onClick={ () => handleIncrease(index) }
           title="+"
-          data-testid="product-increase-quantity"
+          dataTestId="product-increase-quantity"
         />
       </div>
 
