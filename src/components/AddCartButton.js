@@ -4,7 +4,7 @@ import Button from './Button';
 
 class AddCartButton extends React.Component {
   render() {
-    const { handleDecrease, handleIncrease, index, shoppingCart } = this.props;
+    const { handleDecrease, handleIncrease, shoppingCart } = this.props;
     if (shoppingCart.quantity === null || shoppingCart.quantity === undefined) {
       shoppingCart.quantity = 1;
     }
@@ -13,7 +13,7 @@ class AddCartButton extends React.Component {
         <Button
           name="decreaseButton"
           className="decrease-button"
-          onClick={ () => handleDecrease(index) }
+          onClick={ handleDecrease }
           title="-"
           dataTestId="product-decrease-quantity"
         />
@@ -21,12 +21,11 @@ class AddCartButton extends React.Component {
         <Button
           name="increaseButton"
           className="increase-button"
-          onClick={ () => handleIncrease(index) }
+          onClick={ handleIncrease }
           title="+"
           dataTestId="product-increase-quantity"
         />
       </div>
-
     );
   }
 }
@@ -34,10 +33,13 @@ class AddCartButton extends React.Component {
 AddCartButton.propTypes = {
   handleDecrease: PropTypes.func.isRequired,
   handleIncrease: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
-  shoppingCart: PropTypes.arrayOf(
-    PropTypes.object.isRequired,
-  ).isRequired,
+  shoppingCart: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default AddCartButton;

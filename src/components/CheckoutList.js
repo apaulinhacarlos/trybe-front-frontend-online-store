@@ -17,9 +17,13 @@ class CheckoutList extends React.Component {
 }
 
 CheckoutList.propTypes = {
-  product: PropTypes.arrayOf(
-    PropTypes.object.isRequired,
-  ).isRequired,
+  product: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default CheckoutList;
