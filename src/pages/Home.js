@@ -97,13 +97,13 @@ class Home extends React.Component {
               data-testid="shopping-cart-button"
               className="shopping-cart-button"
             >
-              <span class="shopping-cart material-icons-outlined">
-                 shopping_cart
+              <span className="shopping-cart material-icons-outlined">
+                shopping_cart
               </span>
             </Link>
           </header>
           <p
-          data-testid="home-initial-message"
+            data-testid="home-initial-message"
           >
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>
