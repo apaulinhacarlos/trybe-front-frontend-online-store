@@ -23,13 +23,14 @@ class ProductsCard extends React.Component {
   saveProductLocalStorage() {
     const { product } = this.props;
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const { id, title, price, thumbnail } = product;
+    const { id, title, price, thumbnail, category_id } = product;
     const newProduct = {
       id,
       title,
       price,
       thumbnail,
       quantity: 1,
+      category_id,
     };
     cartProducts.push(newProduct);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
@@ -37,11 +38,12 @@ class ProductsCard extends React.Component {
 
   render() {
     const { product } = this.props;
-    const { id, price, thumbnail, title } = product;
-    if (product.quantity === null || product.quantity === undefined) {
+    const { id, price, thumbnail, title, category_id } = product;
+    if (!product.quantity) {
       product.quantity = 1;
     }
     const { saveProductLocalStorage } = this;
+    const LINK_PATH = `/product-details/${category_id}/${id}`;
     return (
       <div
         data-testid="product"
@@ -67,7 +69,7 @@ class ProductsCard extends React.Component {
           dataTestId="product-add-to-cart"
         />
         <Link
-          to={ `/product-details/${id}/${title}/${price}` }
+          to={ LINK_PATH }
           data-testid="product-detail-link"
         >
           Detalhes
