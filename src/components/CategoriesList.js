@@ -19,7 +19,7 @@ class CategoriesList extends React.Component {
   render() {
     const { categories, handleClick } = this.props;
     return (
-      <ul>
+      <div className="categories-list">
         {categories.map((categorie) => (
           <button
             type="button"
@@ -31,7 +31,7 @@ class CategoriesList extends React.Component {
             { categorie.name }
           </button>
         ))}
-      </ul>
+      </div>
     );
   }
 }

@@ -19,7 +19,7 @@ class Search extends React.Component {
   render() {
     const { value, onChange, onClick } = this.props;
     return (
-      <div>
+      <div className="search-bar">
         <input
           type="text"
           value={ value }
@@ -33,11 +33,6 @@ class Search extends React.Component {
         >
           Buscar
         </button>
-        <p
-          data-testid="home-initial-message"
-        >
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
       </div>
     );
   }
