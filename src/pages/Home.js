@@ -70,6 +70,9 @@ class Home extends React.Component {
         quantity: 1,
         thumbnail: 'http://http2.mlstatic.com/D_874554-MLA42823437236_072020-I.jpg',
         title: 'Pequeno Principe, O',
+        shipping: {
+          free_shipping: true,
+        },
       },
     ];
     this.setState({
