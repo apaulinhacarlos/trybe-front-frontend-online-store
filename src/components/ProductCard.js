@@ -38,12 +38,12 @@ class ProductsCard extends React.Component {
   render() {
     const { product } = this.props;
     const { shipping } = product;
-    const { free_shipping } = shipping;
+    const freeShipping = shipping.free_shipping;
     const { id, price, thumbnail, title } = product;
     if (product.quantity === null || product.quantity === undefined) {
       product.quantity = 1;
     }
-    const freteValue = free_shipping ? 'SIM' : 'NÃO';
+    const freteValue = freeShipping ? 'SIM' : 'NÃO';
     const { saveProductLocalStorage } = this;
     return (
       <div
