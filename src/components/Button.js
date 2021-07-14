@@ -9,6 +9,7 @@ class Button extends React.Component {
       className,
       labelValue,
       name,
+      dataTestId,
     } = this.props;
     return (
       <label htmlFor={ name }>
@@ -18,6 +19,7 @@ class Button extends React.Component {
           className={ className }
           type="button"
           onClick={ onClick }
+          data-testid={ dataTestId }
         >
           { title }
         </button>
@@ -36,6 +38,7 @@ Button.propTypes = {
   className: PropTypes.string.isRequired,
   labelValue: PropTypes.string,
   name: PropTypes.string.isRequired,
+  dataTestId: PropTypes.string.isRequired,
 };
 
 export default Button;
