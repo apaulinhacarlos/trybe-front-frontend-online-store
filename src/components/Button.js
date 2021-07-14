@@ -31,11 +31,12 @@ class Button extends React.Component {
 Button.defaultProps = {
   labelValue: '',
   dataTestId: '',
+  onClick: () => {},
 };
 
 Button.propTypes = {
   title: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   className: PropTypes.string.isRequired,
   labelValue: PropTypes.string,
   name: PropTypes.string.isRequired,

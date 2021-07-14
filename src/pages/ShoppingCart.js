@@ -13,6 +13,7 @@ Observações => atributo "data-testid" obrigatório para passar no teste de req
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCartItem from '../components/ShoppingCartItem';
+import Button from '../components/Button';
 
 class ShoppingCart extends React.Component {
   constructor() {
@@ -50,6 +51,7 @@ class ShoppingCart extends React.Component {
   handleDecrease(index) {
     const { shoppingCart } = this.state;
     const newShoppingCart = [...shoppingCart];
+
     if (newShoppingCart[index].quantity > 0) {
       newShoppingCart[index].quantity -= 1;
       this.setState({
@@ -65,11 +67,11 @@ class ShoppingCart extends React.Component {
     this.setState({
       shoppingCart: newShoppingCart,
     });
-    console.log(shoppingCart[index].quantity);
   }
 
   getLocalStorage() {
     const getLocalStorage = JSON.parse(localStorage.getItem('cartProducts'));
+
     this.setState({
       shoppingCart: getLocalStorage,
     });
@@ -77,6 +79,7 @@ class ShoppingCart extends React.Component {
 
   saveProductLocalStorage() {
     const { shoppingCart } = this.state;
+
     localStorage.setItem('cartProducts', JSON.stringify(shoppingCart));
   }
 
@@ -86,12 +89,13 @@ class ShoppingCart extends React.Component {
       const { price, quantity } = item;
       return (acc + (price * quantity));
     }, 0);
+
     return totalPriceCart;
   }
 
   render() {
     const { shoppingCart } = this.state;
-    const { totalPrice } = this;
+    const { handleDecrease, handleIncrease, handleRemove, totalPrice } = this;
 
     return (
       <>
@@ -107,25 +111,23 @@ class ShoppingCart extends React.Component {
                 <ShoppingCartItem
                   shoppingCart={ item }
                   key={ index }
-                  index={ index }
-                  handleDecrease={ this.handleDecrease }
-                  handleIncrease={ this.handleIncrease }
-                  handleRemove={ this.handleRemove }
+                  handleDecrease={ () => handleDecrease(index) }
+                  handleIncrease={ () => handleIncrease(index) }
+                  handleRemove={ () => handleRemove(index) }
                 />
               ))
           }
           <div>
             <p>{ `Total: R$ ${totalPrice()}` }</p>
           </div>
-
           <div>
             <Link to="/checkout">
-              <button
-                type="button"
-                data-testid="checkout-products"
-              >
-                Finalizar Compra
-              </button>
+              <Button
+                name="checkout-btn"
+                title="Finalizar Compra"
+                dataTestId="checkout-products"
+                className="checkout-btn"
+              />
             </Link>
           </div>
         </main>

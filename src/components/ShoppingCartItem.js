@@ -7,7 +7,6 @@ class ShoppingCartItem extends React.Component {
   render() {
     const {
       shoppingCart,
-      index,
       handleDecrease,
       handleIncrease,
       handleRemove,
@@ -23,11 +22,10 @@ class ShoppingCartItem extends React.Component {
             className="shopping-cart-remove-btn"
             title="X"
             name="remove-cart-item"
-            onClick={ () => handleRemove(index) }
+            onClick={ handleRemove }
           />
           <AddCartButton
             shoppingCart={ shoppingCart }
-            index={ index }
             handleDecrease={ handleDecrease }
             handleIncrease={ handleIncrease }
           />
@@ -41,7 +39,6 @@ class ShoppingCartItem extends React.Component {
 ShoppingCartItem.propTypes = {
   handleDecrease: PropTypes.func.isRequired,
   handleIncrease: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
   shoppingCart: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

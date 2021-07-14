@@ -4,13 +4,13 @@ import Button from './Button';
 
 class AddCartButton extends React.Component {
   render() {
-    const { handleDecrease, handleIncrease, index, shoppingCart } = this.props;
+    const { handleDecrease, handleIncrease, shoppingCart } = this.props;
     return (
       <div>
         <Button
           name="decreaseButton"
           className="decrease-button"
-          onClick={ () => handleDecrease(index) }
+          onClick={ handleDecrease }
           title="-"
           dataTestId="product-decrease-quantity"
         />
@@ -18,12 +18,11 @@ class AddCartButton extends React.Component {
         <Button
           name="increaseButton"
           className="increase-button"
-          onClick={ () => handleIncrease(index) }
+          onClick={ handleIncrease }
           title="+"
           dataTestId="product-increase-quantity"
         />
       </div>
-
     );
   }
 }
@@ -31,7 +30,6 @@ class AddCartButton extends React.Component {
 AddCartButton.propTypes = {
   handleDecrease: PropTypes.func.isRequired,
   handleIncrease: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
   shoppingCart: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
