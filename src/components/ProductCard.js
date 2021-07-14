@@ -11,8 +11,8 @@ Dentro da div é criada uma imagem, um título e um preço.
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
 import { Link } from 'react-router-dom';
+import Button from './Button';
 
 class ProductsCard extends React.Component {
   constructor() {
