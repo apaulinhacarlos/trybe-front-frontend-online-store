@@ -11,6 +11,7 @@ Dentro da div é criada uma imagem, um título e um preço.
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from './Button';
 import { Link } from 'react-router-dom';
 
 class ProductsCard extends React.Component {
@@ -37,6 +38,7 @@ class ProductsCard extends React.Component {
   render() {
     const { product } = this.props;
     const { price, thumbnail, title } = product;
+    const { saveProductLocalStorage } = this;
     return (
       <div
         data-testid="product"
@@ -51,13 +53,13 @@ class ProductsCard extends React.Component {
         <span>
           { `R$ ${price}` }
         </span>
-        <button
-          type="button"
-          onClick={ this.saveProductLocalStorage }
-          data-testid="product-add-to-cart"
-        >
-          Comprar
-        </button>
+        <Button
+          title="Comprar"
+          onClick={ saveProductLocalStorage }
+          className="buy-btn"
+          name="buy"
+          dataTestId="product-add-to-cart"
+        />
         <Link
           to={ `/product-details/${title}` }
           data-testid="product-detail-link"
