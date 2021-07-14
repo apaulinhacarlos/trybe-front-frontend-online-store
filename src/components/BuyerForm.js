@@ -12,7 +12,7 @@ class BuyerForm extends React.Component {
           </label>
           <label htmlFor="cpf">
             CPF
-            <input type="text" name="cpf" data-testid="checkout-fullname" />
+            <input type="text" name="cpf" data-testid="checkout-cpf" />
           </label>
           <label htmlFor="email">
             Email

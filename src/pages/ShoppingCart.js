@@ -106,7 +106,14 @@ class ShoppingCart extends React.Component {
           </div>
 
           <div>
-            <button type="button">Finalizar Compra</button>
+            <Link to="/checkout">
+              <button
+                type="button"
+                data-testid="checkout-products"
+              >
+                Finalizar Compra
+              </button>
+            </Link>
           </div>
         </main>
       </>
