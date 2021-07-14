@@ -42,9 +42,13 @@ ShoppingCartItem.propTypes = {
   handleDecrease: PropTypes.func.isRequired,
   handleIncrease: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
-  shoppingCart: PropTypes.arrayOf(
-    PropTypes.object.isRequired,
-  ).isRequired,
+  shoppingCart: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+  }).isRequired,
   handleRemove: PropTypes.func.isRequired,
 };
 

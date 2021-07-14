@@ -13,7 +13,7 @@ Observações => atributo "key" obrigatório para cada elemento criado na funç�
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductsCard from './ProductCard';
+import ProductCard from './ProductCard';
 
 class ProductsList extends React.Component {
   render() {
@@ -21,7 +21,7 @@ class ProductsList extends React.Component {
     return (
       <div>
         {products.map((product) => (
-          <ProductsCard
+          <ProductCard
             key={ product.id }
             product={ product }
           />
