@@ -97,7 +97,7 @@ class Home extends React.Component {
               data-testid="shopping-cart-button"
               className="shopping-cart-button"
             >
-              <span class="material-icons-outlined">
+              <span class="shopping-cart material-icons-outlined">
                  shopping_cart
               </span>
             </Link>
