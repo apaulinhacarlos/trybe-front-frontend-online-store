@@ -80,23 +80,27 @@ class Home extends React.Component {
   render() {
     const { search, products, categories } = this.state;
     return (
-      <main>
-        <Search
-          value={ search }
-          onChange={ this.changeSearch }
-          onClick={ this.fetchProducts }
-        />
-        <Link
-          to="/shopping-cart"
-          data-testid="shopping-cart-button"
-        >
-          Carrinho
-        </Link>
+      <main className="main-home">
         <CategoriesList
           categories={ categories }
           handleClick={ this.handleClickCategory }
         />
-        <ProductsList products={ products } />
+        <section>
+          <header className="main-products-header">
+            <Search
+              value={ search }
+              onChange={ this.changeSearch }
+              onClick={ this.fetchProducts }
+            />
+            <Link
+              to="/shopping-cart"
+              data-testid="shopping-cart-button"
+            >
+              Carrinho
+            </Link>
+          </header>
+          <ProductsList products={ products } />
+        </section>
       </main>
     );
   }

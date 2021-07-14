@@ -1,10 +1,20 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 /* Início dos estilos da página Home */
 
+.main-home {
+  display: flex;
+  flex-flow: row nowrap;
+}
 
+.main-products-header {
+  display: flex;
+  flex-flow: row nowrap;
+}
 
 /* Fim dos estilos da página Home */
 
