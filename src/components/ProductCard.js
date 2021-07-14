@@ -37,10 +37,13 @@ class ProductsCard extends React.Component {
 
   render() {
     const { product } = this.props;
+    const { shipping } = product;
+    const { free_shipping } = shipping;
     const { id, price, thumbnail, title } = product;
     if (product.quantity === null || product.quantity === undefined) {
       product.quantity = 1;
     }
+    const freteValue = free_shipping ? 'SIM' : 'NÃO';
     const { saveProductLocalStorage } = this;
     return (
       <div
@@ -58,6 +61,9 @@ class ProductsCard extends React.Component {
         </span>
         <span data-testid="shopping-cart-product-quantity">
           { `Qtd.: ${product.quantity}` }
+        </span>
+        <span>
+          { `Frete grátis: ${freteValue}` }
         </span>
         <Button
           title="Comprar"
@@ -84,6 +90,9 @@ ProductsCard.propTypes = {
     price: PropTypes.number.isRequired,
     thumbnail: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    shipping: PropTypes.shape({
+      free_shipping: PropTypes.bool.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
