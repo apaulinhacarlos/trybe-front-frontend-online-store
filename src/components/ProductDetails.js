@@ -1,14 +1,43 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class ProductDetails extends React.Component {
+  constructor() {
+    super();
+    this.saveProductLocalStorage = this.saveProductLocalStorage.bind(this);
+  }
+
+  saveProductLocalStorage() {
+    const { match } = this.props;
+    const { params } = match;
+    const { id, title, price } = params;
+    const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
+    const newProduct = {
+      id,
+      title,
+      price,
+      quantity: 1,
+    };
+    cartProducts.push(newProduct);
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+  }
+
   render() {
     const { match } = this.props;
     const { params } = match;
-    const { name } = params;
+    const { title, price } = params;
     return (
       <div>
-        <h3 data-testid="product-detail-name">{name}</h3>
+        <h3 data-testid="product-detail-name">{title}</h3>
+        <span>{`R$ ${price}`}</span>
+        <Link
+          to="/shopping-cart"
+          onClick={ this.saveProductLocalStorage }
+          data-testid="product-detail-add-to-cart"
+        >
+          Comprar
+        </Link>
       </div>
     );
   }
@@ -17,7 +46,10 @@ class ProductDetails extends React.Component {
 ProductDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      thumbnail: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
