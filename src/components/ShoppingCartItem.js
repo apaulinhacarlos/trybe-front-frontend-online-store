@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AddCartButton from './AddCartButton';
+import Button from './Button';
 
 class ShoppingCartItem extends React.Component {
   render() {
-    const { shoppingCart, index, handleDecrease, handleIncrease } = this.props;
+    const { shoppingCart, index, handleDecrease, handleIncrease, handleRemove } = this.props;
     const { title, price, thumbnail } = shoppingCart;
 
     return (
@@ -12,6 +13,7 @@ class ShoppingCartItem extends React.Component {
         <div>
           <img src={ thumbnail } alt={ title } />
           <h3 data-testid="shopping-cart-product-name">{ title }</h3>
+          <Button className="shopping-cart-remove-btn" title="X" name="remove-cart-item" onClick={ () => handleRemove(index) } />
           <AddCartButton
             shoppingCart={ shoppingCart }
             index={ index }

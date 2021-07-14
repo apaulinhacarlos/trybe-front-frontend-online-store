@@ -30,6 +30,7 @@ class Button extends React.Component {
 
 Button.defaultProps = {
   labelValue: '',
+  dataTestId: '',
 };
 
 Button.propTypes = {
@@ -38,7 +39,7 @@ Button.propTypes = {
   className: PropTypes.string.isRequired,
   labelValue: PropTypes.string,
   name: PropTypes.string.isRequired,
-  dataTestId: PropTypes.string.isRequired,
+  dataTestId: PropTypes.string,
 };
 
 export default Button;

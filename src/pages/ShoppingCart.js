@@ -23,6 +23,7 @@ class ShoppingCart extends React.Component {
     this.getLocalStorage = this.getLocalStorage.bind(this);
     this.handleDecrease = this.handleDecrease.bind(this);
     this.handleIncrease = this.handleIncrease.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
     this.saveProductLocalStorage = this.saveProductLocalStorage.bind(this);
     this.totalPrice = this.totalPrice.bind(this);
   }
@@ -36,6 +37,16 @@ class ShoppingCart extends React.Component {
     saveProductLocalStorage();
   }
 
+  handleRemove(index) {
+    const { shoppingCart } = this.state;
+    const newShoppingCart = [...shoppingCart];
+    newShoppingCart.splice(index, 1);
+
+    this.setState({
+      shoppingCart: newShoppingCart,
+    });
+  }
+
   handleDecrease(index) {
     const { shoppingCart } = this.state;
     const newShoppingCart = [...shoppingCart];
@@ -45,7 +56,6 @@ class ShoppingCart extends React.Component {
         shoppingCart: newShoppingCart,
       });
     }
-    console.log(shoppingCart[index].quantity);
   }
 
   handleIncrease(index) {
@@ -100,6 +110,7 @@ class ShoppingCart extends React.Component {
                   index={ index }
                   handleDecrease={ this.handleDecrease }
                   handleIncrease={ this.handleIncrease }
+                  handleRemove={ this.handleRemove }
                 />
               ))
           }
