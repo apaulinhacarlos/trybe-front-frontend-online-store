@@ -80,7 +80,7 @@ class Home extends React.Component {
   render() {
     const { search, products, categories } = this.state;
     return (
-      <div>
+      <main>
         <Search
           value={ search }
           onChange={ this.changeSearch }
@@ -97,7 +97,7 @@ class Home extends React.Component {
           handleClick={ this.handleClickCategory }
         />
         <ProductsList products={ products } />
-      </div>
+      </main>
     );
   }
 }

@@ -19,7 +19,7 @@ class Search extends React.Component {
   render() {
     const { value, onChange, onClick } = this.props;
     return (
-      <div>
+      <div className="search-bar">
         <input
           type="text"
           value={ value }
