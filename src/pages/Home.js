@@ -80,24 +80,36 @@ class Home extends React.Component {
   render() {
     const { search, products, categories } = this.state;
     return (
-      <div>
-        <Search
-          value={ search }
-          onChange={ this.changeSearch }
-          onClick={ this.fetchProducts }
-        />
-        <Link
-          to="/shopping-cart"
-          data-testid="shopping-cart-button"
-        >
-          Carrinho
-        </Link>
+      <main className="main-home">
         <CategoriesList
           categories={ categories }
           handleClick={ this.handleClickCategory }
         />
-        <ProductsList products={ products } />
-      </div>
+        <section className="main-products-section">
+          <header className="main-products-header">
+            <Search
+              value={ search }
+              onChange={ this.changeSearch }
+              onClick={ this.fetchProducts }
+            />
+            <Link
+              to="/shopping-cart"
+              data-testid="shopping-cart-button"
+              className="shopping-cart-button"
+            >
+              <span className="shopping-cart material-icons-outlined">
+                shopping_cart
+              </span>
+            </Link>
+          </header>
+          <p
+            data-testid="home-initial-message"
+          >
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
+          <ProductsList products={ products } />
+        </section>
+      </main>
     );
   }
 }

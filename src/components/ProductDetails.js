@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import RatingForm from './RatingForm';
 import * as api from '../services/api';
+import AddCartButton from './AddCartButton';
+import Button from './Button';
 
 class ProductDetails extends React.Component {
   constructor() {
@@ -11,29 +13,12 @@ class ProductDetails extends React.Component {
     this.state = {
       product: {},
       loading: true,
-    }
-    this.saveProductLocalStorage = this.saveProductLocalStorage.bind(this);
-  }
-
-  saveProductLocalStorage() {
-    const {
-      product: {
-        title,
-        price,
-        id,
-        thumbnail,
-      },
-    } = this.state;
-    console.log(thumbnail)
-    const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const newProduct = {
-      id,
-      title,
-      price,
-      quantity: 1,
     };
-    cartProducts.push(newProduct);
-    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+
+    this.saveProductLocalStorage = this.saveProductLocalStorage.bind(this);
+    this.handleIncrease = this.handleIncrease.bind(this);
+    this.handleDecrease = this.handleDecrease.bind(this);
+    this.handleAddProduct = this.handleAddProduct.bind(this);
   }
 
   async componentDidMount() {
@@ -50,31 +35,75 @@ class ProductDetails extends React.Component {
       ? call.results[0]
       : call;
 
+    const { title, price, thumbnail } = product;
+    const newProduct = {
+      title,
+      price,
+      thumbnail,
+      quantity: 1,
+    };
+
+    this.handleAddProduct(newProduct);
+  }
+
+  handleIncrease() {
+    const { product } = this.state;
+    product.quantity += 1;
+    this.setState({ product });
+  }
+
+  handleDecrease() {
+    const { product } = this.state;
+    product.quantity -= 1;
+    this.setState({ product });
+  }
+
+  handleAddProduct(newProduct) {
     this.setState({
-      product,
-      loading: false
+      product: newProduct,
+      loading: false,
     });
+  }
+
+  saveProductLocalStorage() {
+    const { product } = this.state;
+    const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
+
+    cartProducts.push(product);
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
   }
 
   render() {
     const { loading } = this.state;
     if (loading) {
-     return <div>loading...</div>; 
+      return <div>loading...</div>;
     }
 
-    const { product: { title, price } } = this.state;
+    const { product, product: { title, price } } = this.state;
+    const { handleDecrease, handleIncrease } = this;
 
     return (
       <div>
         <h3 data-testid="product-detail-name">{title}</h3>
         <span>{`R$ ${price}`}</span>
+        <Button
+          dataTestId="product-detail-add-to-cart"
+          onClick={ this.saveProductLocalStorage }
+          title="Adicione ao carrinho"
+          className="add-cart-btn"
+          name="add-cart-btn"
+        />
         <Link
           to="/shopping-cart"
-          onClick={ this.saveProductLocalStorage }
-          data-testid="product-detail-add-to-cart"
+          data-testid="shopping-cart-button"
         >
           Comprar
         </Link>
+        <AddCartButton
+          handleDecrease={ handleDecrease }
+          handleIncrease={ handleIncrease }
+          shoppingCart={ product }
+        />
         <RatingForm />
       </div>
     );
@@ -88,6 +117,7 @@ ProductDetails.propTypes = {
       title: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
       thumbnail: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };

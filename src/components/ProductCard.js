@@ -23,14 +23,14 @@ class ProductsCard extends React.Component {
   saveProductLocalStorage() {
     const { product } = this.props;
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const { id, title, price, thumbnail, category_id } = product;
+    const { id, title, price, thumbnail, category_id: categoryId } = product;
     const newProduct = {
       id,
       title,
       price,
       thumbnail,
       quantity: 1,
-      category_id,
+      categoryId,
     };
     cartProducts.push(newProduct);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
@@ -38,12 +38,19 @@ class ProductsCard extends React.Component {
 
   render() {
     const { product } = this.props;
-    const { id, price, thumbnail, title, category_id } = product;
-    if (!product.quantity) {
-      product.quantity = 1;
-    }
+    const {
+      id,
+      price,
+      thumbnail,
+      title,
+      categoryId,
+      shipping: {
+        free_shipping: freeShipping,
+      },
+    } = product;
+    const freteValue = freeShipping ? 'SIM' : 'NÃO';
     const { saveProductLocalStorage } = this;
-    const LINK_PATH = `/product-details/${category_id}/${id}`;
+    const LINK_PATH = `/product-details/${categoryId}/${id}`;
     return (
       <div
         data-testid="product"
@@ -58,8 +65,8 @@ class ProductsCard extends React.Component {
         <span>
           { `R$ ${price}` }
         </span>
-        <span data-testid="shopping-cart-product-quantity">
-          { `Qtd.: ${product.quantity}` }
+        <span>
+          { `Frete grátis: ${freteValue}` }
         </span>
         <Button
           title="Comprar"
@@ -86,6 +93,11 @@ ProductsCard.propTypes = {
     price: PropTypes.number.isRequired,
     thumbnail: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    shipping: PropTypes.shape({
+      free_shipping: PropTypes.bool.isRequired,
+    }).isRequired,
+    category_id: PropTypes.string.isRequired,
+    categoryId: PropTypes.string.isRequired,
   }).isRequired,
 };
 
