@@ -48,7 +48,6 @@ class ProductsCard extends React.Component {
         free_shipping: freeShipping,
       },
     } = product;
-    console.log(product)
     const freteValue = freeShipping ? 'SIM' : 'NÃO';
     const { saveProductLocalStorage } = this;
     const LINK_PATH = `/product-details/${categoryId}/${id}`;
