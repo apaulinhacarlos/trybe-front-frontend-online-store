@@ -80,36 +80,43 @@ class Home extends React.Component {
   render() {
     const { search, products, categories } = this.state;
     return (
-      <main className="main-home">
-        <CategoriesList
-          categories={ categories }
-          handleClick={ this.handleClickCategory }
-        />
-        <section className="main-products-section">
-          <header className="main-products-header">
-            <Search
-              value={ search }
-              onChange={ this.changeSearch }
-              onClick={ this.fetchProducts }
-            />
-            <Link
-              to="/shopping-cart"
-              data-testid="shopping-cart-button"
-              className="shopping-cart-button"
-            >
-              <span className="shopping-cart material-icons-outlined">
-                shopping_cart
-              </span>
-            </Link>
-          </header>
-          <p
-            data-testid="home-initial-message"
+      <div>
+        <header className="main-products-header">
+          <img
+            className="header-image"
+            src="https://cdn.discordapp.com/attachments/864189505500872756/864959971628417044/logo.png"
+            alt=""
+          />
+          <Search
+            value={ search }
+            onChange={ this.changeSearch }
+            onClick={ this.fetchProducts }
+          />
+          <Link
+            to="/shopping-cart"
+            data-testid="shopping-cart-button"
+            className="shopping-cart-button"
           >
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-          <ProductsList products={ products } />
-        </section>
-      </main>
+            <span className="shopping-cart material-icons-outlined">
+              shopping_cart
+            </span>
+          </Link>
+        </header>
+        <main className="main-home">
+          <CategoriesList
+            categories={ categories }
+            handleClick={ this.handleClickCategory }
+          />
+          <section className="main-products-section">
+            <p
+              data-testid="home-initial-message"
+            >
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </p>
+            <ProductsList products={ products } />
+          </section>
+        </main>
+      </div>
     );
   }
 }
