@@ -52,10 +52,14 @@ body {
 }
 
 .main-products-section {
+  background-color: white;
   color: rgb(91, 91, 91);
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   margin-left: 20%;
+  margin-right: 2%;
+  margin-top: 8%;
+  width: 80%;
 }
 
 .main-products-header {
@@ -66,38 +70,61 @@ body {
   flex-flow: row nowrap;
   height: 100px;
   justify-content: space-between;
+  margin-bottom: 20px;
   position: relative;
   width: 100%;
 }
 
 .search-bar {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: center;
-  margin: auto;
   width: 100%;
 }
 
 .search-bar input {
   border: transparent;
   border-radius: 5px;
-  height: 30px;
-  width: 50%;
+  height: 35px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  width: 60%;
 }
 
 .search-bar button {
-  background-color: rgb(240, 240, 240);
-  border-radius: 3px;
-  color: rgb(255, 134, 5);
-  font-size: 12px;
+  border: transparent;
+  border-radius: 5px;
+  height: 35px;
 }
 
 .search-bar button:hover {
   color: rgb(33, 114, 84);
 }
 
+.open-text {
+  color: white;
+  font-size: 15px;
+}
+
+.search-button {
+  background-color: white;
+  border-radius: 5px;
+  color: rgb(255, 134, 5);
+  font-size: 30px;
+  width: 50px;
+}
+
+.shopping-cart-button {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  text-decoration: none;
+  width: 200px;
+}
+
 .shopping-cart {
-  font-size: 25px;
+  color: white;
+  font-size: 50px;
 }
 
 .shopping-cart-number {
@@ -106,22 +133,15 @@ body {
   border-radius: 50%;
   color: rgb(33, 114, 84);
   display: flex;
-  float: right;
   font-size: 15px;
   font-weight: 700;
   height: 25px;
   justify-content: center;
-  margin-right: 70px;
   width: 25px;
 }
 
 .header-image {
   padding-left: 100px;
-  width: 200px;
-}
-
-.shopping-cart-button {
-  text-decoration: none;
   width: 200px;
 }
 
@@ -197,22 +217,35 @@ body {
 
 .product-card {
   align-items: center;
-  background-color: transparent;
+  background-color: white;
+  border: solid 2px rgb(240, 240, 240);
   display: flex;
   flex-flow: column;
-  height: 400px;
+  height: 350px;
   padding: 10px;
   width: 300px;
 }
 
 .product-card:hover {
-  background-color: white;
   box-shadow: 0 4px 4px rgb(255, 134, 5);
   top: -4px;
 }
 
 .buy-btn {
-  width: 100%;
+  background-color: rgb(33, 114, 84);
+  border-radius: 8%;
+  color: white;
+  font-size: 18px;
+  width: 260px;
+}
+
+.details-btn {
+  background-color: rgb(255, 134, 5);
+  border-radius: 8%;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  width: 260px;
 }
 
 /* Fim dos estilos dos Product Cards */
