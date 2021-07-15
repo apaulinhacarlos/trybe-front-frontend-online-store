@@ -9,8 +9,8 @@ Descrição => Página inicial da aplicação.
 */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import CategoriesList from '../components/CategoriesList';
+import CartIconAndCounter from '../components/CartIconAndCounter';
 import ProductsList from '../components/ProductsList';
 import Search from '../components/Search';
 import * as api from '../services/api';
@@ -24,12 +24,14 @@ class Home extends React.Component {
       search: '',
       products: [],
       categories: [],
+      cartQuantity: 0,
     };
     this.fetchProducts = this.fetchProducts.bind(this);
     this.fetchCategories = this.fetchCategories.bind(this);
     this.changeSearch = this.changeSearch.bind(this);
     this.handleClickCategory = this.handleClickCategory.bind(this);
     this.fetchProductsCategory = this.fetchProductsCategory.bind(this);
+    this.increaseOneInTheCart = this.increaseOneInTheCart.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +79,17 @@ class Home extends React.Component {
     });
   }
 
+  increaseOneInTheCart() {
+    const quantityLocalStorage = JSON.parse(localStorage.cartProducts).length;
+    this.setState({
+      cartQuantity: quantityLocalStorage,
+    });
+    const { cartQuantity } = this.state;
+    return (
+      <p>{ cartQuantity }</p>
+    );
+  }
+
   render() {
     const { search, products, categories } = this.state;
     return (
@@ -92,15 +105,7 @@ class Home extends React.Component {
             onChange={ this.changeSearch }
             onClick={ this.fetchProducts }
           />
-          <Link
-            to="/shopping-cart"
-            data-testid="shopping-cart-button"
-            className="shopping-cart-button"
-          >
-            <span className="shopping-cart material-icons-outlined">
-              shopping_cart
-            </span>
-          </Link>
+          <CartIconAndCounter />
         </header>
         <main className="main-home">
           <CategoriesList
@@ -113,7 +118,10 @@ class Home extends React.Component {
             >
               Digite algum termo de pesquisa ou escolha uma categoria.
             </p>
-            <ProductsList products={ products } />
+            <ProductsList
+              products={ products }
+              increaseOneInTheCart={ this.increaseOneInTheCart }
+            />
           </section>
         </main>
       </div>

@@ -20,8 +20,7 @@ class ShoppingCart extends React.Component {
     super();
     this.state = {
       shoppingCart: [],
-      className: "cart-section",
-      timeOutId: 1,
+      className: 'cart-section',
     };
     this.getLocalStorage = this.getLocalStorage.bind(this);
     this.handleDecrease = this.handleDecrease.bind(this);
@@ -36,13 +35,16 @@ class ShoppingCart extends React.Component {
     this.getLocalStorage();
     setTimeout(() => {
       this.handleClassName();
-    }, 1)
-    
+    }, 1);
   }
 
   componentDidUpdate() {
     const { saveProductLocalStorage } = this;
     saveProductLocalStorage();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(1);
   }
 
   handleRemove(index) {
@@ -76,6 +78,10 @@ class ShoppingCart extends React.Component {
     });
   }
 
+  handleClassName() {
+    this.setState({ className: 'cart-section cart-slide' });
+  }
+
   getLocalStorage() {
     const getLocalStorage = JSON.parse(localStorage.getItem('cartProducts'));
 
@@ -100,52 +106,44 @@ class ShoppingCart extends React.Component {
     return totalPriceCart;
   }
 
-  handleClassName() {
-    this.setState({ className: "cart-section cart-slide" });
-  }
-
-  componentWillUnmount() {
-    clearTimeout(1);
-  }
-
   render() {
     const { shoppingCart, className } = this.state;
     const { handleDecrease, handleIncrease, handleRemove, totalPrice } = this;
 
     return (
-      <section className={`${className}`} >
+      <section className={ `${className}` }>
         <header>
           <Link to="/" data-testid="shopping-cart-button">Voltar</Link>
           <h1>Carrinho de Compras</h1>
         </header>
-          <div className="cart-product-list">          
-            {
-              shoppingCart.length <= 0
-                ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
-                : shoppingCart.map((item, index) => (
-                  <ShoppingCartItem
-                    shoppingCart={ item }
-                    key={ index }
-                    handleDecrease={ () => handleDecrease(index) }
-                    handleIncrease={ () => handleIncrease(index) }
-                    handleRemove={ () => handleRemove(index) }
-                  />
-                ))
-            }
-          </div>
-          <div>
-            <p>{ `Total: R$ ${totalPrice()}` }</p>
-          </div>
-          <div>
-            <Link to="/checkout">
-              <Button
-                name="checkout-btn"
-                title="Finalizar Compra"
-                dataTestId="checkout-products"
-                className="checkout-btn"
-              />
-            </Link>
-          </div>
+        <div className="cart-product-list">
+          {
+            shoppingCart.length <= 0
+              ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
+              : shoppingCart.map((item, index) => (
+                <ShoppingCartItem
+                  shoppingCart={ item }
+                  key={ index }
+                  handleDecrease={ () => handleDecrease(index) }
+                  handleIncrease={ () => handleIncrease(index) }
+                  handleRemove={ () => handleRemove(index) }
+                />
+              ))
+          }
+        </div>
+        <div>
+          <p>{ `Total: R$ ${totalPrice()}` }</p>
+        </div>
+        <div>
+          <Link to="/checkout">
+            <Button
+              name="checkout-btn"
+              title="Finalizar Compra"
+              dataTestId="checkout-products"
+              className="checkout-btn"
+            />
+          </Link>
+        </div>
       </section>
     );
   }
