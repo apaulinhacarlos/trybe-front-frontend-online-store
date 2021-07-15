@@ -98,7 +98,7 @@ class ShoppingCart extends React.Component {
     const { handleDecrease, handleIncrease, handleRemove, totalPrice } = this;
 
     return (
-      <>
+      <section className="cart-section">
         <header>
           <Link to="/" data-testid="shopping-cart-button">Voltar</Link>
           <h1>Carrinho de Compras</h1>
@@ -131,7 +131,7 @@ class ShoppingCart extends React.Component {
             </Link>
           </div>
         </main>
-      </>
+      </section>
     );
   }
 }
