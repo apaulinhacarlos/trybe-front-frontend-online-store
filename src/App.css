@@ -16,6 +16,10 @@ body {
   width: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 /* Início dos estilos da página Home */
 .main-home {
   display: flex;
@@ -197,13 +201,14 @@ body {
   width: 100%;
 }
 
-/* Início dos estilos dos Product Cards */
+/* Fim dos estilos dos Product Cards */
 
 /* Início dos estilos da página Home */
 .cart-section {
   display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
   height: 100vh;
-  flex-flow: column;
   width: 30vw;
   position: fixed;
   padding: 10px;
@@ -212,13 +217,29 @@ body {
   top: 100px;
   bottom: 0;
   background-color: #217254;
-  border: 4px solid #ff8605;
   border-top: none;
+  box-shadow: -4px 9px 15px black;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.checkout-btn {
+  width: 100%;
+  height: 25px;
+  background-color: #ff8605 ;
+  color: rgb(34, 34, 34);
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
 }
 
 .cart-product-list {
   overflow: scroll;
   height: 70vh;
+  background-color: rgb(144, 204, 121);
+  border-radius: 5px;
+  padding: 10px;
 }
 
 /* Fim dos estilos da página Home */

@@ -103,21 +103,20 @@ class ShoppingCart extends React.Component {
           <Link to="/" data-testid="shopping-cart-button">Voltar</Link>
           <h1>Carrinho de Compras</h1>
         </header>
-        <main>
           <div className="cart-product-list">          
-          {
-            shoppingCart.length <= 0
-              ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
-              : shoppingCart.map((item, index) => (
-                <ShoppingCartItem
-                  shoppingCart={ item }
-                  key={ index }
-                  handleDecrease={ () => handleDecrease(index) }
-                  handleIncrease={ () => handleIncrease(index) }
-                  handleRemove={ () => handleRemove(index) }
-                />
-              ))
-          }
+            {
+              shoppingCart.length <= 0
+                ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
+                : shoppingCart.map((item, index) => (
+                  <ShoppingCartItem
+                    shoppingCart={ item }
+                    key={ index }
+                    handleDecrease={ () => handleDecrease(index) }
+                    handleIncrease={ () => handleIncrease(index) }
+                    handleRemove={ () => handleRemove(index) }
+                  />
+                ))
+            }
           </div>
           <div>
             <p>{ `Total: R$ ${totalPrice()}` }</p>
@@ -132,7 +131,6 @@ class ShoppingCart extends React.Component {
               />
             </Link>
           </div>
-        </main>
       </section>
     );
   }
