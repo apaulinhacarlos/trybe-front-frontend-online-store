@@ -46,7 +46,7 @@ class ProductsCard extends React.Component {
   }
 
   render() {
-    const { product } = this.props;
+    const { product, increaseOneInTheCart } = this.props;
     const {
       id,
       price,
@@ -87,8 +87,12 @@ class ProductsCard extends React.Component {
           dataTestId="product-add-to-cart"
         />
         <Link
-          to={ LINK_PATH }
+          to={ {
+            pathname: LINK_PATH,
+            detailsProps: { func: increaseOneInTheCart },
+          } }
           data-testid="product-detail-link"
+          // increaseOneInTheCart={ increaseOneInTheCart }
         >
           Detalhes
         </Link>

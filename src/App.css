@@ -27,7 +27,6 @@ body {
   display: flex;
   flex-flow: column wrap;
   padding-left: 10px;
-  padding-top: 100px;
   position: fixed;
   width: 20%;
 }
@@ -53,7 +52,6 @@ body {
   display: flex;
   flex-flow: row;
   margin-left: 20%;
-  padding-top: 100px;
 }
 
 .main-products-header {
@@ -64,7 +62,7 @@ body {
   flex-flow: row nowrap;
   height: 100px;
   justify-content: space-between;
-  position: fixed;
+  position: relative;
   width: 100%;
 }
 
@@ -214,3 +212,6 @@ body {
 }
 
 /* Início dos estilos dos Product Cards */
+.details-btn {
+  width: 100%;
+}
