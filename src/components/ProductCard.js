@@ -21,7 +21,7 @@ class ProductsCard extends React.Component {
   }
 
   saveProductLocalStorage() {
-    const { product } = this.props;
+    const { product, increaseOneInTheCart } = this.props;
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
     const {
       id,
@@ -42,6 +42,7 @@ class ProductsCard extends React.Component {
     };
     cartProducts.push(newProduct);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+    increaseOneInTheCart();
   }
 
   render() {
@@ -110,6 +111,7 @@ ProductsCard.propTypes = {
     categoryId: PropTypes.string.isRequired,
     available_quantity: PropTypes.number.isRequired,
   }).isRequired,
+  increaseOneInTheCart: PropTypes.func.isRequired,
 };
 
 export default ProductsCard;
