@@ -113,11 +113,6 @@ class Home extends React.Component {
             handleClick={ this.handleClickCategory }
           />
           <section className="main-products-section">
-            <p
-              data-testid="home-initial-message"
-            >
-              Digite algum termo de pesquisa ou escolha uma categoria.
-            </p>
             <ProductsList
               products={ products }
               increaseOneInTheCart={ this.increaseOneInTheCart }
