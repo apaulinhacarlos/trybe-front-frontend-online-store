@@ -80,10 +80,11 @@ class Home extends React.Component {
 
   increaseOneInTheCart() {
     const quantityLocalStorage = JSON.parse(localStorage.cartProducts).length;
-    console.log(quantityLocalStorage);
     this.setState({
       cartQuantity: quantityLocalStorage,
     });
+    const { cartQuantity } = this.state;
+    console.log(cartQuantity);
   }
 
   render() {

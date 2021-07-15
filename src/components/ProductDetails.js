@@ -13,7 +13,7 @@ class ProductDetails extends React.Component {
 
     this.state = {
       product: {},
-      loading: true,
+      // loading: true,
       cartQuantity: 0,
     };
 
@@ -78,15 +78,12 @@ class ProductDetails extends React.Component {
   handleAddProduct(newProduct) {
     this.setState({
       product: newProduct,
-      loading: false,
+      // loading: false,
     });
   }
 
   saveProductLocalStorage() {
     const { product } = this.state;
-    // const { location: { detailsProps: { func } } } = this.props;
-    // console.log(func);
-
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
     cartProducts.push(product);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
@@ -99,13 +96,15 @@ class ProductDetails extends React.Component {
     this.setState({
       cartQuantity: quantityLocalStorage,
     });
+    const { cartQuantity } = this.state;
+    console.log(cartQuantity);
   }
 
   render() {
-    const { loading } = this.state;
-    if (loading) {
-      return <div>loading...</div>;
-    }
+    // const { loading } = this.state;
+    // if (loading) {
+    //   return <div>loading...</div>;
+    // }
 
     const { product } = this.state;
     const {
@@ -133,7 +132,7 @@ class ProductDetails extends React.Component {
           />
           <Link
             to="/shopping-cart"
-            data-testid="shopping-cart-button"
+            // data-testid="shopping-cart-button"
           >
             Comprar
           </Link>
