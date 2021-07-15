@@ -23,13 +23,14 @@ class ProductsCard extends React.Component {
   saveProductLocalStorage() {
     const { product } = this.props;
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const { id, title, price, thumbnail } = product;
+    const { id, title, price, thumbnail, category_id: categoryId } = product;
     const newProduct = {
       id,
       title,
       price,
       thumbnail,
       quantity: 1,
+      categoryId,
     };
     cartProducts.push(newProduct);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
@@ -37,14 +38,19 @@ class ProductsCard extends React.Component {
 
   render() {
     const { product } = this.props;
-    const { shipping } = product;
-    const freeShipping = shipping.free_shipping;
-    const { id, price, thumbnail, title } = product;
-    if (product.quantity === null || product.quantity === undefined) {
-      product.quantity = 1;
-    }
+    const {
+      id,
+      price,
+      thumbnail,
+      title,
+      categoryId,
+      shipping: {
+        free_shipping: freeShipping,
+      },
+    } = product;
     const freteValue = freeShipping ? 'SIM' : 'NÃO';
     const { saveProductLocalStorage } = this;
+    const LINK_PATH = `/product-details/${categoryId}/${id}`;
     return (
       <div
         data-testid="product"
@@ -59,9 +65,6 @@ class ProductsCard extends React.Component {
         <span>
           { `R$ ${price}` }
         </span>
-        <span data-testid="shopping-cart-product-quantity">
-          { `Qtd.: ${product.quantity}` }
-        </span>
         <span>
           { `Frete grátis: ${freteValue}` }
         </span>
@@ -73,7 +76,7 @@ class ProductsCard extends React.Component {
           dataTestId="product-add-to-cart"
         />
         <Link
-          to={ `/product-details/${id}/${title}/${price}` }
+          to={ LINK_PATH }
           data-testid="product-detail-link"
         >
           Detalhes
@@ -93,6 +96,8 @@ ProductsCard.propTypes = {
     shipping: PropTypes.shape({
       free_shipping: PropTypes.bool.isRequired,
     }).isRequired,
+    category_id: PropTypes.string.isRequired,
+    categoryId: PropTypes.string.isRequired,
   }).isRequired,
 };
 

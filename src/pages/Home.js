@@ -30,12 +30,10 @@ class Home extends React.Component {
     this.changeSearch = this.changeSearch.bind(this);
     this.handleClickCategory = this.handleClickCategory.bind(this);
     this.fetchProductsCategory = this.fetchProductsCategory.bind(this);
-    this.fetchProductsHome = this.fetchProductsHome.bind(this);
   }
 
   componentDidMount() {
     this.fetchCategories();
-    this.fetchProductsHome();
   }
 
   // Requisito 06: um handle para atribuir o id da categoria na
@@ -57,24 +55,6 @@ class Home extends React.Component {
     const { search } = this.state;
     const products = await api.getProductsFromCategoryAndQuery(null, search);
     const { results } = products;
-    this.setState({
-      products: results,
-    });
-  }
-
-  async fetchProductsHome() {
-    const results = [
-      {
-        id: 'MLB1715061838',
-        price: 359.45,
-        quantity: 1,
-        thumbnail: 'http://http2.mlstatic.com/D_874554-MLA42823437236_072020-I.jpg',
-        title: 'Pequeno Principe, O',
-        shipping: {
-          free_shipping: true,
-        },
-      },
-    ];
     this.setState({
       products: results,
     });
