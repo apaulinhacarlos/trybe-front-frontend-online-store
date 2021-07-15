@@ -11,14 +11,14 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={ Home } />
-          <Route path="/shopping-cart" component={ ShoppingCart } />
           <Route
             path="/product-details/:category/:id"
             component={ ProductDetails }
           />
           <Route path="/checkout" component={ Checkout } />
+          <Route path="/" component={ Home } />
         </Switch>
+        <Route path="/shopping-cart" component={ ShoppingCart } />
       </BrowserRouter>
     );
   }

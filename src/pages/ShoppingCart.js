@@ -20,6 +20,7 @@ class ShoppingCart extends React.Component {
     super();
     this.state = {
       shoppingCart: [],
+      className: 'cart-section',
     };
     this.getLocalStorage = this.getLocalStorage.bind(this);
     this.handleDecrease = this.handleDecrease.bind(this);
@@ -27,15 +28,23 @@ class ShoppingCart extends React.Component {
     this.handleRemove = this.handleRemove.bind(this);
     this.saveProductLocalStorage = this.saveProductLocalStorage.bind(this);
     this.totalPrice = this.totalPrice.bind(this);
+    this.handleClassName = this.handleClassName.bind(this);
   }
 
   componentDidMount() {
     this.getLocalStorage();
+    setTimeout(() => {
+      this.handleClassName();
+    }, 1);
   }
 
   componentDidUpdate() {
     const { saveProductLocalStorage } = this;
     saveProductLocalStorage();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(1);
   }
 
   handleRemove(index) {
@@ -69,6 +78,10 @@ class ShoppingCart extends React.Component {
     });
   }
 
+  handleClassName() {
+    this.setState({ className: 'cart-section cart-slide' });
+  }
+
   getLocalStorage() {
     const getLocalStorage = JSON.parse(localStorage.getItem('cartProducts'));
 
@@ -94,16 +107,16 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    const { shoppingCart } = this.state;
+    const { shoppingCart, className } = this.state;
     const { handleDecrease, handleIncrease, handleRemove, totalPrice } = this;
 
     return (
-      <>
+      <section className={ `${className}` }>
         <header>
           <Link to="/" data-testid="shopping-cart-button">Voltar</Link>
           <h1>Carrinho de Compras</h1>
         </header>
-        <main>
+        <div className="cart-product-list">
           {
             shoppingCart.length <= 0
               ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
@@ -117,21 +130,21 @@ class ShoppingCart extends React.Component {
                 />
               ))
           }
-          <div>
-            <p>{ `Total: R$ ${totalPrice()}` }</p>
-          </div>
-          <div>
-            <Link to="/checkout">
-              <Button
-                name="checkout-btn"
-                title="Finalizar Compra"
-                dataTestId="checkout-products"
-                className="checkout-btn"
-              />
-            </Link>
-          </div>
-        </main>
-      </>
+        </div>
+        <div>
+          <p>{ `Total: R$ ${totalPrice()}` }</p>
+        </div>
+        <div>
+          <Link to="/checkout">
+            <Button
+              name="checkout-btn"
+              title="Finalizar Compra"
+              dataTestId="checkout-products"
+              className="checkout-btn"
+            />
+          </Link>
+        </div>
+      </section>
     );
   }
 }
