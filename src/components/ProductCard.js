@@ -54,8 +54,10 @@ class ProductsCard extends React.Component {
     return (
       <div
         data-testid="product"
+        className="product-card"
       >
         <img
+          className="card-image"
           src={ thumbnail }
           alt={ title }
         />

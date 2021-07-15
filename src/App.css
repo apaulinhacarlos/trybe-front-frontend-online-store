@@ -8,6 +8,14 @@
   color: black;
 }
 
+body {
+  background-color: rgb(240, 240, 240);
+  display: table;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
 /* Início dos estilos da página Home */
 .main-home {
   display: flex;
@@ -18,24 +26,45 @@
 .categories-list {
   display: flex;
   flex-flow: column wrap;
+  padding-left: 10px;
+  padding-top: 100px;
   position: fixed;
   width: 20%;
 }
 
+.category-button {
+  background-color: transparent;
+  border: transparent;
+  color: rgb(91, 91, 91);
+  font-family: Verdana , Geneva , Tahoma , sans-serif;
+  font-size: 13px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.category-button:hover {
+  background-color: white;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
 .main-products-section {
-  align-items: center;
+  color: rgb(91, 91, 91);
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row;
   margin-left: 20%;
-  padding: 0 15px;
-  width: 80%;
+  padding-top: 100px;
 }
 
 .main-products-header {
   align-items: center;
+  background-color: rgb(33, 114, 84);
+  border-bottom: solid rgb(255, 134, 5) 4px;
   display: flex;
   flex-flow: row nowrap;
+  height: 100px;
   justify-content: space-between;
+  position: fixed;
   width: 100%;
 }
 
@@ -48,15 +77,34 @@
 }
 
 .search-bar input {
+  border: transparent;
+  border-radius: 5px;
+  height: 30px;
   width: 50%;
 }
 
 .search-bar button {
-  border: 1px solid grey;
+  background-color: rgb(240, 240, 240);
+  border-radius: 3px;
+  color: rgb(255, 134, 5);
+  font-size: 12px;
+}
+
+.search-bar button:hover {
+  color: rgb(33, 114, 84);
 }
 
 .shopping-cart {
   font-size: 25px;
+}
+
+.header-image {
+  padding-left: 100px;
+  width: 200px;
+}
+
+.shopping-cart-button {
+  width: 200px;
 }
 
 /* Fim dos estilos da página Home */
@@ -122,3 +170,31 @@
 }
 
 /* Fim dos estilos do componente Comment */
+
+/* Início dos estilos dos Product Cards */
+.card-image {
+  height: 50%;
+  width: 100%;
+}
+
+.product-card {
+  align-items: center;
+  background-color: transparent;
+  display: flex;
+  flex-flow: column;
+  height: 400px;
+  padding: 10px;
+  width: 300px;
+}
+
+.product-card:hover {
+  background-color: white;
+  box-shadow: 0 4px 4px rgb(255, 134, 5);
+  top: -4px;
+}
+
+.buy-btn {
+  width: 100%;
+}
+
+/* Início dos estilos dos Product Cards */
