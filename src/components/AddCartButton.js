@@ -5,9 +5,11 @@ import Button from './Button';
 class AddCartButton extends React.Component {
   render() {
     const { handleDecrease, handleIncrease, shoppingCart } = this.props;
+    const { quantity, availableQuantity } = shoppingCart;
     if (shoppingCart.quantity === null || shoppingCart.quantity === undefined) {
       shoppingCart.quantity = 1;
     }
+    console.log(availableQuantity)
     return (
       <div>
         <Button
@@ -16,14 +18,16 @@ class AddCartButton extends React.Component {
           onClick={ handleDecrease }
           title="-"
           dataTestId="product-decrease-quantity"
+          disabled={ quantity <= 1 }
         />
-        <p data-testid="shopping-cart-product-quantity">{shoppingCart.quantity}</p>
+        <p data-testid="shopping-cart-product-quantity">{ quantity }</p>
         <Button
           name="increaseButton"
           className="increase-button"
           onClick={ handleIncrease }
           title="+"
           dataTestId="product-increase-quantity"
+          disabled={ quantity >= availableQuantity }
         />
       </div>
     );

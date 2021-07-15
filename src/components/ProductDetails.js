@@ -35,12 +35,22 @@ class ProductDetails extends React.Component {
       ? call.results[0]
       : call;
 
-    const { title, price, thumbnail } = product;
+    const {
+      categoryId,
+      id: productId,
+      title,
+      price,
+      thumbnail,
+      available_quantity: availableQuantity,
+    } = product;
     const newProduct = {
       title,
       price,
       thumbnail,
       quantity: 1,
+      availableQuantity,
+      id: productId,
+      categoryId,
     };
 
     this.handleAddProduct(newProduct);
@@ -81,7 +91,6 @@ class ProductDetails extends React.Component {
 
     const { product, product: { title, price } } = this.state;
     const { handleDecrease, handleIncrease } = this;
-
     return (
       <div>
         <h3 data-testid="product-detail-name">{title}</h3>

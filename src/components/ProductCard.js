@@ -23,7 +23,14 @@ class ProductsCard extends React.Component {
   saveProductLocalStorage() {
     const { product } = this.props;
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const { id, title, price, thumbnail, category_id: categoryId } = product;
+    const {
+      id,
+      title,
+      price,
+      thumbnail,
+      category_id: categoryId,
+      available_quantity: availableQuantity,
+    } = product;
     const newProduct = {
       id,
       title,
@@ -31,6 +38,7 @@ class ProductsCard extends React.Component {
       thumbnail,
       quantity: 1,
       categoryId,
+      availableQuantity,
     };
     cartProducts.push(newProduct);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
