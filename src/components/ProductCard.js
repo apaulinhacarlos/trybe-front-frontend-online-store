@@ -21,9 +21,16 @@ class ProductsCard extends React.Component {
   }
 
   saveProductLocalStorage() {
-    const { product } = this.props;
+    const { product, increaseOneInTheCart } = this.props;
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const { id, title, price, thumbnail, category_id: categoryId } = product;
+    const {
+      id,
+      title,
+      price,
+      thumbnail,
+      category_id: categoryId,
+      available_quantity: availableQuantity,
+    } = product;
     const newProduct = {
       id,
       title,
@@ -31,9 +38,11 @@ class ProductsCard extends React.Component {
       thumbnail,
       quantity: 1,
       categoryId,
+      availableQuantity,
     };
     cartProducts.push(newProduct);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+    increaseOneInTheCart();
   }
 
   render() {
@@ -43,7 +52,7 @@ class ProductsCard extends React.Component {
       price,
       thumbnail,
       title,
-      categoryId,
+      category_id: categoryId,
       shipping: {
         free_shipping: freeShipping,
       },
@@ -101,7 +110,9 @@ ProductsCard.propTypes = {
     }).isRequired,
     category_id: PropTypes.string.isRequired,
     categoryId: PropTypes.string.isRequired,
+    available_quantity: PropTypes.number.isRequired,
   }).isRequired,
+  increaseOneInTheCart: PropTypes.func.isRequired,
 };
 
 export default ProductsCard;

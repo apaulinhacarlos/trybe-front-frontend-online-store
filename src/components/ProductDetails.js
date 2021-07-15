@@ -35,12 +35,26 @@ class ProductDetails extends React.Component {
       ? call.results[0]
       : call;
 
-    const { title, price, thumbnail } = product;
+    const {
+      title,
+      price,
+      thumbnail,
+      shipping: {
+        free_shipping: freeShipping,
+      },
+      categoryId,
+      id: productId,
+      available_quantity: availableQuantity,
+    } = product;
     const newProduct = {
       title,
       price,
       thumbnail,
       quantity: 1,
+      freeShipping,
+      availableQuantity,
+      id: productId,
+      categoryId,
     };
 
     this.handleAddProduct(newProduct);
@@ -79,12 +93,20 @@ class ProductDetails extends React.Component {
       return <div>loading...</div>;
     }
 
-    const { product, product: { title, price } } = this.state;
+    const { product } = this.state;
+    const {
+      title,
+      price,
+      thumbnail,
+      freeShipping,
+    } = product;
     const { handleDecrease, handleIncrease } = this;
-
+    const frete = freeShipping ? 'SIM' : 'NÃO';
     return (
       <div>
+        <img src={ thumbnail } alt={ title } />
         <h3 data-testid="product-detail-name">{title}</h3>
+        <span>{`Frete grátis: ${frete}`}</span>
         <span>{`R$ ${price}`}</span>
         <Button
           dataTestId="product-detail-add-to-cart"
