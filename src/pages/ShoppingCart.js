@@ -104,6 +104,7 @@ class ShoppingCart extends React.Component {
           <h1>Carrinho de Compras</h1>
         </header>
         <main>
+          <div className="cart-product-list">          
           {
             shoppingCart.length <= 0
               ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
@@ -117,6 +118,7 @@ class ShoppingCart extends React.Component {
                 />
               ))
           }
+          </div>
           <div>
             <p>{ `Total: R$ ${totalPrice()}` }</p>
           </div>

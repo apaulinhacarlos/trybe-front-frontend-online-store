@@ -201,17 +201,24 @@ body {
 
 /* Início dos estilos da página Home */
 .cart-section {
-width: 30vw;
-overflow: scroll;
-position: fixed;
-padding: 10px;
-left: 70vw;
-right: 0;
-top: 100px;
-bottom: 0;
-background-color: #217254;
-border: 4px solid #ff8605;
-border-top: none;
+  display: flex;
+  height: 100vh;
+  flex-flow: column;
+  width: 30vw;
+  position: fixed;
+  padding: 10px;
+  left: 70vw;
+  right: 0;
+  top: 100px;
+  bottom: 0;
+  background-color: #217254;
+  border: 4px solid #ff8605;
+  border-top: none;
+}
+
+.cart-product-list {
+  overflow: scroll;
+  height: 70vh;
 }
 
 /* Fim dos estilos da página Home */
