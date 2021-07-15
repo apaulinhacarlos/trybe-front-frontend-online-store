@@ -98,12 +98,28 @@ body {
   font-size: 25px;
 }
 
+.shopping-cart-number {
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  color: rgb(33, 114, 84);
+  display: flex;
+  float: right;
+  font-size: 15px;
+  font-weight: 700;
+  height: 25px;
+  justify-content: center;
+  margin-right: 70px;
+  width: 25px;
+}
+
 .header-image {
   padding-left: 100px;
   width: 200px;
 }
 
 .shopping-cart-button {
+  text-decoration: none;
   width: 200px;
 }
 

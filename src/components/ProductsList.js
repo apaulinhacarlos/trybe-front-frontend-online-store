@@ -17,14 +17,14 @@ import ProductCard from './ProductCard';
 
 class ProductsList extends React.Component {
   render() {
-    const { products } = this.props;
-    console.log(products);
+    const { products, increaseOneInTheCart } = this.props;
     return (
       <div data-testid="free-shipping">
         {products.map((product) => (
           <ProductCard
             key={ product.id }
             product={ product }
+            increaseOneInTheCart={ increaseOneInTheCart }
           />
         ))}
       </div>
@@ -36,6 +36,7 @@ ProductsList.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.object.isRequired,
   ).isRequired,
+  increaseOneInTheCart: PropTypes.func.isRequired,
 };
 
 export default ProductsList;
