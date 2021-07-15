@@ -32,8 +32,16 @@ class Search extends React.Component {
           data-testid="query-button"
           className="query-button"
         >
-          Buscar
+          <span className="search-button material-icons-outlined">
+            search
+          </span>
         </button>
+        <p
+          data-testid="home-initial-message"
+          className="open-text"
+        >
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
       </div>
     );
   }

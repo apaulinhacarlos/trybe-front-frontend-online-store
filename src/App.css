@@ -48,12 +48,21 @@ body {
   font-size: 14px;
 }
 
+.open-text {
+  align-content: center;
+  color: white;
+  font-size: 15px;
+}
+
 .main-products-section {
+  background-color: white;
   color: rgb(91, 91, 91);
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   margin-left: 20%;
-  padding-top: 100px;
+  margin-right: 2%;
+  margin-top: 8%;
+  width: 80%;
 }
 
 .main-products-header {
@@ -70,7 +79,7 @@ body {
 
 .search-bar {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: center;
   margin: auto;
   width: 100%;
@@ -79,13 +88,13 @@ body {
 .search-bar input {
   border: transparent;
   border-radius: 5px;
-  height: 30px;
+  height: 35px;
   width: 50%;
 }
 
 .search-bar button {
-  background-color: rgb(240, 240, 240);
-  border-radius: 3px;
+  background-color: white;
+  border-radius: 8px;
   color: rgb(255, 134, 5);
   font-size: 12px;
 }
@@ -95,7 +104,21 @@ body {
 }
 
 .shopping-cart {
-  font-size: 25px;
+  color: white;
+  font-size: 50px;
+  width: 200px;
+}
+
+.search-button {
+  background-color: white;
+  border-radius: 5px;
+  color: rgb(255, 134, 5);
+  font-size: 30px;
+  width: 50px;
+}
+
+.query-button {
+  background-color: white;
 }
 
 .header-image {
@@ -103,9 +126,6 @@ body {
   width: 200px;
 }
 
-.shopping-cart-button {
-  width: 200px;
-}
 
 /* Fim dos estilos da página Home */
 
@@ -179,22 +199,35 @@ body {
 
 .product-card {
   align-items: center;
-  background-color: transparent;
+  background-color: white;
+  border: solid 2px rgb(240, 240, 240);
   display: flex;
   flex-flow: column;
-  height: 400px;
+  height: 350px;
   padding: 10px;
   width: 300px;
 }
 
 .product-card:hover {
-  background-color: white;
   box-shadow: 0 4px 4px rgb(255, 134, 5);
   top: -4px;
 }
 
 .buy-btn {
-  width: 100%;
+  background-color: rgb(33, 114, 84);
+  border-radius: 8%;
+  color: white;
+  font-size: 18px;
+  width: 260px;
+}
+
+.details-btn {
+  background-color: rgb(255, 134, 5);
+  border-radius: 8%;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  width: 260px;
 }
 
 /* Início dos estilos dos Product Cards */

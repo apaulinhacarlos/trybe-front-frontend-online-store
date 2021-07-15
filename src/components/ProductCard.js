@@ -80,6 +80,7 @@ class ProductsCard extends React.Component {
         <Link
           to={ LINK_PATH }
           data-testid="product-detail-link"
+          className="details-btn"
         >
           Detalhes
         </Link>

@@ -19,7 +19,7 @@ class ProductsList extends React.Component {
   render() {
     const { products } = this.props;
     return (
-      <div data-testid="free-shipping">
+      <div data-testid="free-shipping" className=" main-products-section">
         {products.map((product) => (
           <ProductCard
             key={ product.id }
