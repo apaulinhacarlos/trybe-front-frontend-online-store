@@ -36,34 +36,25 @@ class ProductDetails extends React.Component {
       : call;
 
     const {
-<<<<<<< HEAD
       title,
       price,
       thumbnail,
       shipping: {
         free_shipping: freeShipping,
       },
-=======
       categoryId,
       id: productId,
-      title,
-      price,
-      thumbnail,
       available_quantity: availableQuantity,
->>>>>>> 482ee4331fadd992189691cf00e9e705cce14021
     } = product;
     const newProduct = {
       title,
       price,
       thumbnail,
       quantity: 1,
-<<<<<<< HEAD
       freeShipping,
-=======
       availableQuantity,
       id: productId,
       categoryId,
->>>>>>> 482ee4331fadd992189691cf00e9e705cce14021
     };
 
     this.handleAddProduct(newProduct);
@@ -110,10 +101,7 @@ class ProductDetails extends React.Component {
       freeShipping,
     } = product;
     const { handleDecrease, handleIncrease } = this;
-<<<<<<< HEAD
     const frete = freeShipping ? 'SIM' : 'NÃO';
-=======
->>>>>>> 482ee4331fadd992189691cf00e9e705cce14021
     return (
       <div>
         <img src={ thumbnail } alt={ title } />
