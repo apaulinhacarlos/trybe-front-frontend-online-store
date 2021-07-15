@@ -43,11 +43,12 @@ class ProductsCard extends React.Component {
       price,
       thumbnail,
       title,
-      categoryId,
+      category_id: categoryId,
       shipping: {
         free_shipping: freeShipping,
       },
     } = product;
+    console.log(product)
     const freteValue = freeShipping ? 'SIM' : 'NÃO';
     const { saveProductLocalStorage } = this;
     const LINK_PATH = `/product-details/${categoryId}/${id}`;
