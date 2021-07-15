@@ -20,6 +20,8 @@ class ShoppingCart extends React.Component {
     super();
     this.state = {
       shoppingCart: [],
+      className: "cart-section",
+      timeOutId: 1,
     };
     this.getLocalStorage = this.getLocalStorage.bind(this);
     this.handleDecrease = this.handleDecrease.bind(this);
@@ -27,10 +29,15 @@ class ShoppingCart extends React.Component {
     this.handleRemove = this.handleRemove.bind(this);
     this.saveProductLocalStorage = this.saveProductLocalStorage.bind(this);
     this.totalPrice = this.totalPrice.bind(this);
+    this.handleClassName = this.handleClassName.bind(this);
   }
 
   componentDidMount() {
     this.getLocalStorage();
+    setTimeout(() => {
+      this.handleClassName();
+    }, 1)
+    
   }
 
   componentDidUpdate() {
@@ -93,12 +100,20 @@ class ShoppingCart extends React.Component {
     return totalPriceCart;
   }
 
+  handleClassName() {
+    this.setState({ className: "cart-section cart-slide" });
+  }
+
+  componentWillUnmount() {
+    clearTimeout(1);
+  }
+
   render() {
-    const { shoppingCart } = this.state;
+    const { shoppingCart, className } = this.state;
     const { handleDecrease, handleIncrease, handleRemove, totalPrice } = this;
 
     return (
-      <section className="cart-section">
+      <section className={`${className}`} >
         <header>
           <Link to="/" data-testid="shopping-cart-button">Voltar</Link>
           <h1>Carrinho de Compras</h1>

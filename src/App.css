@@ -212,7 +212,7 @@ body {
   width: 30vw;
   position: fixed;
   padding: 10px;
-  left: 70vw;
+  left: 100%;
   right: 0;
   top: 100px;
   bottom: 0;
@@ -221,6 +221,11 @@ body {
   box-shadow: -4px 9px 15px black;
   color: black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: left 2s;
+}
+
+.cart-slide {
+  left: 70vw;
 }
 
 .checkout-btn {
