@@ -64,7 +64,7 @@ body {
   flex-flow: row nowrap;
   height: 100px;
   justify-content: space-between;
-  position: fixed; 
+  position: fixed;
   width: 100%;
 }
 
