@@ -37,7 +37,7 @@ class ProductsCard extends React.Component {
   }
 
   render() {
-    const { product } = this.props;
+    const { product, dataTestId } = this.props;
     const {
       id,
       price,
@@ -61,7 +61,7 @@ class ProductsCard extends React.Component {
           src={ thumbnail }
           alt={ title }
         />
-        <h3 data-testid="shopping-cart-product-name">
+        <h3 data-testid={ dataTestId }>
           { title }
         </h3>
         <span>
@@ -89,6 +89,10 @@ class ProductsCard extends React.Component {
 }
 
 ProductsCard.propTypes = {
+  dataTestId: "",
+}
+
+ProductsCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
@@ -101,6 +105,7 @@ ProductsCard.propTypes = {
     category_id: PropTypes.string.isRequired,
     categoryId: PropTypes.string.isRequired,
   }).isRequired,
+  dataTestId: PropTypes.string,
 };
 
 export default ProductsCard;
