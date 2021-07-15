@@ -57,7 +57,7 @@ class ProductsCard extends React.Component {
         className="product-card"
       >
         <img
-          id="card-image"
+          className="card-image"
           src={ thumbnail }
           alt={ title }
         />

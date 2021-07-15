@@ -83,7 +83,7 @@ class Home extends React.Component {
       <div>
         <header className="main-products-header">
           <img
-            id="header-image"
+            className="header-image"
             src="https://cdn.discordapp.com/attachments/864189505500872756/864959971628417044/logo.png"
             alt=""
           />
