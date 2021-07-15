@@ -9,7 +9,6 @@ class AddCartButton extends React.Component {
     if (shoppingCart.quantity === null || shoppingCart.quantity === undefined) {
       shoppingCart.quantity = 1;
     }
-    console.log(availableQuantity)
     return (
       <div>
         <Button
@@ -43,6 +42,7 @@ AddCartButton.propTypes = {
     price: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired,
     thumbnail: PropTypes.string.isRequired,
+    availableQuantity: PropTypes.number.isRequired,
   }).isRequired,
 };
 

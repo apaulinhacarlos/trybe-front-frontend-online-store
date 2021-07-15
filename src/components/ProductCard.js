@@ -108,6 +108,7 @@ ProductsCard.propTypes = {
     }).isRequired,
     category_id: PropTypes.string.isRequired,
     categoryId: PropTypes.string.isRequired,
+    available_quantity: PropTypes.number.isRequired,
   }).isRequired,
 };
 
