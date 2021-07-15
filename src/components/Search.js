@@ -30,6 +30,7 @@ class Search extends React.Component {
           type="button"
           onClick={ onClick }
           data-testid="query-button"
+          className="query-button"
         >
           Buscar
         </button>

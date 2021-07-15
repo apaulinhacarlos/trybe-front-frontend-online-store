@@ -22,6 +22,7 @@ class CategoriesList extends React.Component {
       <div className="categories-list">
         {categories.map((categorie) => (
           <button
+            className="category-button"
             type="button"
             id={ categorie.id }
             onClick={ handleClick }
