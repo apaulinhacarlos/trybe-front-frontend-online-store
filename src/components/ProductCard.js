@@ -43,7 +43,7 @@ class ProductsCard extends React.Component {
       price,
       thumbnail,
       title,
-      categoryId,
+      category_id: categoryId,
       shipping: {
         free_shipping: freeShipping,
       },
