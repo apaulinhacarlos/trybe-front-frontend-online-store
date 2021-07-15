@@ -81,9 +81,9 @@ class Home extends React.Component {
 
   increaseOneInTheCart() {
     const quantityLocalStorage = JSON.parse(localStorage.cartProducts).length;
-    this.setState((prevState) => ({
-      cartQuantity: prevState + quantityLocalStorage,
-    }));
+    this.setState({
+      cartQuantity: quantityLocalStorage,
+    });
     const { cartQuantity } = this.state;
     return (
       <p>{ cartQuantity }</p>
@@ -105,7 +105,7 @@ class Home extends React.Component {
             onChange={ this.changeSearch }
             onClick={ this.fetchProducts }
           />
-          <CartIconAndCounter increaseOneInTheCart={ this.increaseOneInTheCart } />
+          <CartIconAndCounter />
         </header>
         <main className="main-home">
           <CategoriesList
