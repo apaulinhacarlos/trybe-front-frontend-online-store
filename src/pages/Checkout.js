@@ -40,22 +40,22 @@ class Checkout extends React.Component {
     const { totalValue } = this;
 
     return (
-      <>
-        <div>
-          <p>Revise seus Produtos</p>
+      <div className="checkout-all">
+        <p className="checkout-title">Revise seus Produtos</p>
+        <div className="checkout-products-list">
           {listProducts.map((item) => (<CheckoutList
             key={ item.id }
             product={ item }
           />
           ))}
-          <p>
-            {`Total: R$ ${totalValue()}`}
-          </p>
         </div>
+        <p>
+          {`Total: R$ ${totalValue()}`}
+        </p>
         <BuyerForm />
         <PaymentForm />
         <button type="button">Comprar</button>
-      </>
+      </div>
     );
   }
 }

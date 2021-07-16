@@ -300,3 +300,45 @@ body {
 }
 
 /* Fim dos estilos da página Home */
+
+/* Início dos estilos da página Checkout */
+
+.checkout-all {
+  margin: 10px 0px 10px 10px;
+}
+
+.checkout-all p {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.checkout-title {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.checkout-product-card {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  max-width: 700px;
+  border: 1px solid black;
+  background-color: #90CC79;
+  border-radius: 5px;
+}
+
+.checkout-product-card-data {
+  margin: -5px 0px 0px 10px;
+}
+
+.checkout-product-card-text p {
+  margin-top: 10px;
+}
+
+.checkout-product-card img {
+  width: 120px;
+  border: 1px solid white;
+  padding: 3px;
+}
+.checkout-products-list {
+  margin-bottom: 20px;
+}
