@@ -302,7 +302,6 @@ body {
 /* Fim dos estilos da página Home */
 
 /* Início dos estilos da página Checkout */
-
 .checkout-all {
   margin: 10px 0 10px 10px;
 }
@@ -314,12 +313,12 @@ body {
 
 .checkout-product-card {
   display: flex;
+  border-radius: 5px;
+  background-color: #90cc79;
   margin-bottom: 20px;
-  background-color: #90CC79;
   border: 1px solid black;
   max-width: 600px;
   padding: 10px;
-  border-radius: 5px;
 }
 
 .checkout-product-card-data {
@@ -331,8 +330,8 @@ body {
 }
 
 .checkout-product-card img {
-  width: 120px;
   border: 1px solid white;
+  width: 120px;
   padding: 3px;
 }
 
@@ -341,24 +340,24 @@ body {
 }
 
 .buyerform-all {
-  margin: 15px 0 20px;
   display: flex;
+  margin: 15px 0 20px;
   flex-wrap: wrap;
   width: 600px;
 }
 
 .buyerform-fieldset {
-  padding: 10px;
-  border-radius: 5px;
   background-color: #90cc79;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .buyerform-fieldset legend {
-  padding: 2px;
-  font-weight: 700;
+  background-color: #90cc79;
   border: 1px solid black;
   border-radius: 5px;
-  background-color: #90cc79;
+  font-weight: 700;
+  padding: 2px;
 }
 
 .paymentform-all {
@@ -367,22 +366,22 @@ body {
 }
 
 .paymentform-fieldset {
+  background-color: #90cc79;
   padding: 10px;
   border-radius: 5px;
-  background-color: #90cc79;
 }
 
 .paymentform-fieldset legend {
-  padding: 2px;
+  background-color: #90cc79;
   font-weight: 700;
+  padding: 2px;
   border: 1px solid black;
   border-radius: 5px;
-  background-color: #90cc79;
 }
 
 .checkout-button {
-  padding: 10px;
-  font-weight: 700;
   background-color: #90cc79;
+  font-weight: 700;
+  padding: 10px;
   border-radius: 5px;
 }
