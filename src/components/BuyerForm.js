@@ -3,8 +3,8 @@ import React from 'react';
 class BuyerForm extends React.Component {
   render() {
     return (
-      <form>
-        <fieldset>
+      <form className="buyerform-all">
+        <fieldset className="buyerform-fieldset">
           <legend>Informações do Comprador</legend>
           <label htmlFor="fullname">
             Nome Completo

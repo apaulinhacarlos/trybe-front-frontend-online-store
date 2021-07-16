@@ -6,11 +6,15 @@ class CheckoutList extends React.Component {
     const { product } = this.props;
     const { title, price, quantity, thumbnail } = product;
     return (
-      <div>
+      <div className="checkout-product-card">
         <img src={ thumbnail } alt={ title } />
-        <h3>{ title }</h3>
-        <p>{ `Preço: ${price}` }</p>
-        <p>{ `Quantidade: ${quantity}` }</p>
+        <div className="checkout-product-card-data">
+          <h3>{ title }</h3>
+          <div className="checkout-product-card-text">
+            <p>{ `Preço: R$ ${price}` }</p>
+            <p>{ `Quantidade: ${quantity}` }</p>
+          </div>
+        </div>
       </div>
     );
   }
