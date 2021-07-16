@@ -12,12 +12,12 @@ class CartIconAndCounter extends React.Component {
         <span className="shopping-cart material-icons-outlined">
           shopping_cart
         </span>
-        <span
+        <p
           data-testid="shopping-cart-size"
           className="shopping-cart-number"
         >
           { JSON.parse(localStorage.cartProducts).length }
-        </span>
+        </p>
       </Link>
     );
   }

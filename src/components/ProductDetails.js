@@ -5,6 +5,7 @@ import RatingForm from './RatingForm';
 import * as api from '../services/api';
 import AddCartButton from './AddCartButton';
 import Button from './Button';
+import Header from './Header';
 
 class ProductDetails extends React.Component {
   constructor() {
@@ -12,13 +13,15 @@ class ProductDetails extends React.Component {
 
     this.state = {
       product: {},
-      loading: true,
+      // loading: true,
+      cartQuantity: 0,
     };
 
     this.saveProductLocalStorage = this.saveProductLocalStorage.bind(this);
     this.handleIncrease = this.handleIncrease.bind(this);
     this.handleDecrease = this.handleDecrease.bind(this);
     this.handleAddProduct = this.handleAddProduct.bind(this);
+    this.increaseOneInTheCart = this.increaseOneInTheCart.bind(this);
   }
 
   async componentDidMount() {
@@ -75,23 +78,33 @@ class ProductDetails extends React.Component {
   handleAddProduct(newProduct) {
     this.setState({
       product: newProduct,
-      loading: false,
+      // loading: false,
     });
   }
 
   saveProductLocalStorage() {
     const { product } = this.state;
     const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
-
     cartProducts.push(product);
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+    this.increaseOneInTheCart();
+  }
+
+  increaseOneInTheCart() {
+    const quantityLocalStorage = JSON.parse(localStorage.cartProducts).length;
+    console.log(quantityLocalStorage);
+    this.setState({
+      cartQuantity: quantityLocalStorage,
+    });
+    const { cartQuantity } = this.state;
+    console.log(cartQuantity);
   }
 
   render() {
-    const { loading } = this.state;
-    if (loading) {
-      return <div>loading...</div>;
-    }
+    // const { loading } = this.state;
+    // if (loading) {
+    //   return <div>loading...</div>;
+    // }
 
     const { product } = this.state;
     const {
@@ -103,31 +116,34 @@ class ProductDetails extends React.Component {
     const { handleDecrease, handleIncrease } = this;
     const frete = freeShipping ? 'SIM' : 'NÃO';
     return (
-      <div>
-        <img src={ thumbnail } alt={ title } />
-        <h3 data-testid="product-detail-name">{title}</h3>
-        <span>{`Frete grátis: ${frete}`}</span>
-        <span>{`R$ ${price}`}</span>
-        <Button
-          dataTestId="product-detail-add-to-cart"
-          onClick={ this.saveProductLocalStorage }
-          title="Adicione ao carrinho"
-          className="add-cart-btn"
-          name="add-cart-btn"
-        />
-        <Link
-          to="/shopping-cart"
-          data-testid="shopping-cart-button"
-        >
-          Comprar
-        </Link>
-        <AddCartButton
-          handleDecrease={ handleDecrease }
-          handleIncrease={ handleIncrease }
-          shoppingCart={ product }
-        />
-        <RatingForm />
-      </div>
+      <>
+        <Header />
+        <div>
+          <img src={ thumbnail } alt={ title } />
+          <h3 data-testid="product-detail-name">{title}</h3>
+          <span>{`Frete grátis: ${frete}`}</span>
+          <span>{`R$ ${price}`}</span>
+          <Button
+            dataTestId="product-detail-add-to-cart"
+            onClick={ this.saveProductLocalStorage }
+            title="Adicione ao carrinho"
+            className="add-cart-btn"
+            name="add-cart-btn"
+          />
+          <Link
+            to="/shopping-cart"
+            // data-testid="shopping-cart-button"
+          >
+            Comprar
+          </Link>
+          <AddCartButton
+            handleDecrease={ handleDecrease }
+            handleIncrease={ handleIncrease }
+            shoppingCart={ product }
+          />
+          <RatingForm />
+        </div>
+      </>
     );
   }
 }

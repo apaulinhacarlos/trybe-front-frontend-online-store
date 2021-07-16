@@ -10,9 +10,8 @@ Descrição => Página inicial da aplicação.
 
 import React from 'react';
 import CategoriesList from '../components/CategoriesList';
-import CartIconAndCounter from '../components/CartIconAndCounter';
 import ProductsList from '../components/ProductsList';
-import Search from '../components/Search';
+import Header from '../components/Header';
 import * as api from '../services/api';
 
 class Home extends React.Component {
@@ -85,28 +84,19 @@ class Home extends React.Component {
       cartQuantity: quantityLocalStorage,
     });
     const { cartQuantity } = this.state;
-    return (
-      <p>{ cartQuantity }</p>
-    );
+    console.log(cartQuantity);
   }
 
   render() {
+    console.log('atualizei');
     const { search, products, categories } = this.state;
     return (
       <div>
-        <header className="main-products-header">
-          <img
-            className="header-image"
-            src="https://cdn.discordapp.com/attachments/864189505500872756/864959971628417044/logo.png"
-            alt=""
-          />
-          <Search
-            value={ search }
-            onChange={ this.changeSearch }
-            onClick={ this.fetchProducts }
-          />
-          <CartIconAndCounter />
-        </header>
+        <Header
+          search={ search }
+          onChange={ this.changeSearch }
+          onClick={ this.fetchProducts }
+        />
         <main className="main-home">
           <CategoriesList
             categories={ categories }
