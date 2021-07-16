@@ -313,10 +313,10 @@ body {
 
 .checkout-product-card {
   background-color: #90cc79;
-  border-radius: 5px;
   border: 1px solid black;
-  padding: 10px;
+  border-radius: 5px;
   display: flex;
+  padding: 10px;
   margin-bottom: 20px;
   max-width: 600px;
 }
