@@ -3,8 +3,8 @@ import React from 'react';
 class PaymentForm extends React.Component {
   render() {
     return (
-      <form>
-        <fieldset>
+      <form className="paymentform-all">
+        <fieldset className="paymentform-fieldset">
           <legend>Método de Pagamento</legend>
           <label htmlFor="boleto">
             Boleto
