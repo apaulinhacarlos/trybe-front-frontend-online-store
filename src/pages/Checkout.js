@@ -54,7 +54,7 @@ class Checkout extends React.Component {
         </p>
         <BuyerForm />
         <PaymentForm />
-        <button type="button">Comprar</button>
+        <button type="button" className="checkout-button">Comprar</button>
       </div>
     );
   }
