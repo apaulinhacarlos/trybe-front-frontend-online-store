@@ -307,10 +307,6 @@ body {
   margin: 10px 0px 10px 10px;
 }
 
-.checkout-all p {
-  margin-bottom: 10px;
-}
-
 .checkout-title {
   font-weight: 700;
   margin-bottom: 20px;
@@ -318,10 +314,10 @@ body {
 .checkout-product-card {
   display: flex;
   margin-bottom: 20px;
-  padding: 10px;
-  max-width: 600px;
-  border: 1px solid black;
   background-color: #90CC79;
+  border: 1px solid black;
+  max-width: 600px;
+  padding: 10px;
   border-radius: 5px;
 }
 
