@@ -315,10 +315,10 @@ body {
   background-color: #90cc79;
   border: 1px solid black;
   border-radius: 5px;
+  max-width: 600px;
   display: flex;
   margin-bottom: 20px;
   padding: 10px;
-  max-width: 600px;
 }
 
 .checkout-product-card-data {
